@@ -367,6 +367,17 @@
                 Our Menu
             </h1>
             <p class="text-xl md:text-2xl relative z-10 mb-8 font-medium">Discover our delicious selection of burgers, submarines & beverages</p>
+            
+            <!-- Order Online Button -->
+            <div class="mb-8 relative z-10">
+                <a href="https://burleys-webshop.delivergate.com/" target="_blank" rel="noopener noreferrer" 
+                   class="inline-flex items-center gap-3 px-8 py-4 bg-white text-orange-600 rounded-full font-bold text-lg hover:shadow-2xl transition-all transform hover:-translate-y-1 hover:scale-105 shadow-lg">
+                    <i class="fas fa-shopping-cart text-xl"></i>
+                    Order Online Now
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
             <div class="flex flex-wrap justify-center gap-4 text-sm">
                 <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-full px-4 py-2">
                     <i class="fas fa-burger mr-2"></i>50+ Items
@@ -487,8 +498,54 @@
 </footer>
 
     <script>
-        // Menu Data
-        const menuItems = [
+        // Delivergate API Configuration
+        const DELIVERGATE_API = {
+            baseURL: 'https://pos.delivergate.com/api/v1/webshop',
+            categoryId: 5,
+            webshopBrand: 1,
+            shop: 1,
+            tenantCode: 'burleys',
+            webshopURL: 'https://burleys-webshop.delivergate.com/',
+            timeout: 10000,
+
+            getMenuURL() {
+                return `${this.baseURL}/main-menu/${this.categoryId}/categories/webshop-brand/${this.webshopBrand}/shop/${this.shop}`;
+            },
+
+            async fetchWithTimeout(url, options = {}) {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), this.timeout);
+
+                try {
+                    const response = await fetch(url, {
+                        ...options,
+                        signal: controller.signal,
+                        headers: {
+                            'accept': 'application/json',
+                            'content-type': 'application/json',
+                            'origin': 'https://burleys-webshop.delivergate.com',
+                            'referer': 'https://burleys-webshop.delivergate.com/',
+                            'x-tenant-code': this.tenantCode,
+                            ...options.headers
+                        }
+                    });
+
+                    clearTimeout(timeoutId);
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    return await response.json();
+                } catch (error) {
+                    clearTimeout(timeoutId);
+                    throw error;
+                }
+            }
+        };
+
+        // Fallback Menu Data (in case API fails)
+        const fallbackMenuItems = [
             // Beef Burgers
             {
                 name: "Big Burley",
@@ -1309,6 +1366,10 @@
             }
         ];
 
+        // Active menu items (will be populated from API or fallback)
+        let menuItems = [];
+        let isLoadingFromAPI = true;
+
         // DOM Elements
         const menuGrid = document.getElementById('menuGrid');
         const searchInput = document.getElementById('searchInput');
@@ -1318,8 +1379,159 @@
         let currentCategory = 'all';
         let currentSearch = '';
 
+        // Process Delivergate API Data
+        function processDelivergateData(apiResponse) {
+            // Handle different response formats
+            let items = apiResponse;
+            
+            // If wrapped in a data object
+            if (apiResponse.data) {
+                items = Array.isArray(apiResponse.data) ? apiResponse.data : apiResponse.data.items || apiResponse.data.menu_items || [];
+            }
+            
+            // Ensure items is an array
+            if (!Array.isArray(items)) {
+                items = [];
+            }
+
+            // Map API fields to our format
+            return items.map(item => {
+                // Get category from API or default to 'sides'
+                let category = 'sides';
+                const itemCategory = (item.category_name || item.category || '').toLowerCase();
+                
+                if (itemCategory.includes('burger')) category = 'burgers';
+                else if (itemCategory.includes('submarine') || itemCategory.includes('sub')) category = 'submarines';
+                else if (itemCategory.includes('beverage') || itemCategory.includes('drink') || itemCategory.includes('coffee') || itemCategory.includes('frappe') || itemCategory.includes('gelato')) category = 'beverages';
+
+                return {
+                    id: item.id || item.item_id || item.product_id,
+                    name: item.name || item.item_name || item.product_name || 'Unknown Item',
+                    description: item.description || item.item_description || '',
+                    price: formatPrice(item.price || item.item_price || item.selling_price || 0),
+                    image: item.image || item.item_image || item.photo_url || '🍔',
+                    category: category
+                };
+            });
+        }
+
+        // Format price
+        function formatPrice(price) {
+            if (typeof price === 'string') {
+                // Remove any existing formatting
+                price = price.replace(/[^0-9.]/g, '');
+            }
+            const numPrice = parseFloat(price);
+            if (isNaN(numPrice)) return '0';
+            return numPrice.toLocaleString('en-LK', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+        }
+
+        // Load menu from Delivergate API
+        async function loadMenuFromAPI() {
+            try {
+                console.log('Fetching menu from Delivergate API...');
+                const apiURL = DELIVERGATE_API.getMenuURL();
+                console.log('API URL:', apiURL);
+                
+                const apiData = await DELIVERGATE_API.fetchWithTimeout(apiURL);
+                console.log('API Response:', apiData);
+                
+                let processedItems = [];
+                
+                // Handle categorized data structure: { data: { "Category Name": [items], ... } }
+                if (apiData && apiData.data && typeof apiData.data === 'object' && !Array.isArray(apiData.data)) {
+                    console.log('Processing categorized menu structure...');
+                    Object.entries(apiData.data).forEach(([categoryName, items]) => {
+                        if (Array.isArray(items)) {
+                            items.forEach(item => {
+                                // Get category from API or map it
+                                let category = 'sides';
+                                const catName = categoryName.toLowerCase();
+                                
+                                if (catName.includes('burger')) category = 'burgers';
+                                else if (catName.includes('submarine') || catName.includes('sub')) category = 'submarines';
+                                else if (catName.includes('beverage') || catName.includes('drink') || catName.includes('coffee') || catName.includes('frappe') || catName.includes('gelato')) category = 'beverages';
+                                
+                                processedItems.push({
+                                    id: item.id || item.item_id || item.product_id,
+                                    name: item.title || item.name || item.item_name || 'Unknown Item',
+                                    description: item.description || item.item_description || '',
+                                    price: formatPrice(item.price || item.item_price || item.selling_price || 0),
+                                    image: item.image_url || item.image || item.item_image || '🍔',
+                                    category: category
+                                });
+                            });
+                        }
+                    });
+                } else {
+                    // Fallback to original processing
+                    processedItems = processDelivergateData(apiData);
+                }
+                
+                if (processedItems.length > 0) {
+                    console.log(`Successfully loaded ${processedItems.length} items from API`);
+                    menuItems = processedItems;
+                    isLoadingFromAPI = false;
+                    renderMenu();
+                    return true;
+                } else {
+                    throw new Error('No items received from API');
+                }
+            } catch (error) {
+                console.warn('Delivergate API Error:', error.message);
+                console.log('Falling back to local menu data...');
+                menuItems = fallbackMenuItems;
+                isLoadingFromAPI = false;
+                renderMenu();
+                showAPIWarning();
+                return false;
+            }
+        }
+
+        // Show API warning banner
+        function showAPIWarning() {
+            const warningBanner = document.createElement('div');
+            warningBanner.className = 'bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6 max-w-7xl mx-auto';
+            warningBanner.innerHTML = `
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-exclamation-triangle text-yellow-400 text-xl"></i>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-yellow-700">
+                            <strong>Note:</strong> Showing cached menu items. Could not connect to live menu system.
+                            <button onclick="location.reload()" class="ml-2 underline font-semibold hover:text-yellow-900">Retry</button>
+                        </p>
+                    </div>
+                </div>
+            `;
+            document.querySelector('.max-w-7xl.mx-auto.px-4.py-12').insertBefore(
+                warningBanner,
+                document.querySelector('.max-w-7xl.mx-auto.px-4.py-12').firstChild
+            );
+        }
+
+        // Show loading state
+        function showLoadingState() {
+            menuGrid.innerHTML = `
+                <div class="col-span-full flex flex-col items-center justify-center py-20">
+                    <div class="relative mb-6">
+                        <div class="w-16 h-16 border-4 border-orange-200 border-t-orange-500 rounded-full animate-spin"></div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Loading Menu...</h3>
+                    <p class="text-gray-500">Fetching the latest items from our kitchen</p>
+                </div>
+            `;
+        }
+
         // Render Menu Items
         function renderMenu() {
+            // Show loading state if still loading from API
+            if (isLoadingFromAPI) {
+                showLoadingState();
+                return;
+            }
+
             const filteredItems = menuItems.filter(item => {
                 const matchesCategory = currentCategory === 'all' || item.category === currentCategory;
                 const matchesSearch = item.name.toLowerCase().includes(currentSearch.toLowerCase()) ||
@@ -1387,8 +1599,12 @@
             renderMenu();
         });
 
-        // Initial Render
-        renderMenu();
+        // Initial Load - Show loading state and fetch from API
+        renderMenu(); // Show loading state immediately
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            loadMenuFromAPI();
+        });
 
         // Smooth scroll for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {

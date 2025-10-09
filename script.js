@@ -405,10 +405,11 @@ if (backToTopBtn) {
 
 // Delivergate API Configuration (Inline)
 const DELIVERGATE_API = {
-  baseURL: 'https://pos-dev.delivergate.com/api/v1/webshop',
-  categoryId: null, // Will be set dynamically from categories
+  baseURL: 'https://pos.delivergate.com/api/v1/webshop',
+  categoryId: 5, // Main menu category ID
   webshopBrand: 1,
   shop: 1,
+  tenantCode: 'burleys',
   timeout: 10000,
   useLocalFallback: true, // Set to false to force API-only mode
   
@@ -435,8 +436,11 @@ const DELIVERGATE_API = {
         signal: controller.signal,
         mode: 'cors',
         headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
+          'accept': 'application/json',
+          'content-type': 'application/json',
+          'origin': 'https://burleys-webshop.delivergate.com',
+          'referer': 'https://burleys-webshop.delivergate.com/',
+          'x-tenant-code': this.tenantCode,
           ...options.headers
         }
       });
@@ -487,32 +491,9 @@ async function loadFeaturedMenu(forceCategoryId = null) {
   menuError.style.display = 'none';
 
   try {
-    let categoryId = forceCategoryId;
-    
-    // If no category ID, try to get from categories endpoint first
-    if (!categoryId) {
-      console.log('🔍 Attempting to fetch available categories...');
-      const categories = await DELIVERGATE_API.getValidCategories();
-      
-      if (categories && Array.isArray(categories) && categories.length > 0) {
-        // Use the first category or find a "featured" category
-        const featuredCategory = categories.find(cat => 
-          cat.featured || cat.is_featured || 
-          cat.name?.toLowerCase().includes('featured') ||
-          cat.name?.toLowerCase().includes('signature')
-        );
-        
-        categoryId = featuredCategory ? (featuredCategory.id || featuredCategory.category_id) : (categories[0].id || categories[0].category_id);
-        console.log(`✅ Using category ID: ${categoryId}`, featuredCategory || categories[0]);
-      } else if (categories && categories.data && Array.isArray(categories.data)) {
-        // Handle wrapped response
-        categoryId = categories.data[0].id || categories.data[0].category_id;
-        console.log(`✅ Using category ID from wrapped data: ${categoryId}`);
-      } else {
-        console.warn('⚠️ No categories found, using local fallback');
-        throw new Error('No categories available from API');
-      }
-    }
+    // Use forced category ID, or default to configured category ID
+    let categoryId = forceCategoryId || DELIVERGATE_API.categoryId;
+    console.log(`📌 Using category ID: ${categoryId}`);
 
     // Try Delivergate API with category ID
     const menuURL = DELIVERGATE_API.getMenuURL(categoryId);
@@ -524,7 +505,25 @@ async function loadFeaturedMenu(forceCategoryId = null) {
     // Process Delivergate API response
     let menuItems = [];
     
-    if (apiData && Array.isArray(apiData)) {
+    // Handle categorized data structure: { data: { "Category Name": [items], ... } }
+    if (apiData && apiData.data && typeof apiData.data === 'object' && !Array.isArray(apiData.data)) {
+      console.log('Processing categorized menu structure...');
+      Object.entries(apiData.data).forEach(([categoryName, items]) => {
+        if (Array.isArray(items)) {
+          items.forEach(item => {
+            menuItems.push({
+              id: item.id || item.item_id || item.product_id,
+              name: item.title || item.name || item.item_name || 'Unknown Item',
+              description: item.description || item.item_description || '',
+              price: formatAPIPrice(item.price || item.item_price || item.selling_price || 0),
+              image: item.image_url || item.image || item.item_image || 'images/placeholder.webp',
+              category: categoryName,
+              featured: true
+            });
+          });
+        }
+      });
+    } else if (apiData && Array.isArray(apiData)) {
       menuItems = processDelivergateData(apiData);
     } else if (apiData && apiData.data && Array.isArray(apiData.data)) {
       menuItems = processDelivergateData(apiData.data);
@@ -593,6 +592,17 @@ function showErrorMessage(errorElement, message) {
     `;
     errorElement.innerHTML = errorHTML;
   }
+}
+
+// Format price from API
+function formatAPIPrice(price) {
+  if (typeof price === 'string') {
+    // Remove any existing formatting
+    price = price.replace(/[^0-9.]/g, '');
+  }
+  const numPrice = parseFloat(price);
+  if (isNaN(numPrice)) return '0.00';
+  return numPrice.toFixed(2);
 }
 
 // Process Delivergate API data to match our format
@@ -741,9 +751,12 @@ async function testDelivergateAPI() {
 }
 
 // Load menu when page loads
-document.addEventListener('DOMContentLoaded', () => {
-  loadFeaturedMenu();
-});
+// Note: Homepage now uses static featured menu (index.html)
+// API integration is active only on menu.html page
+// Uncomment below to re-enable API for homepage:
+// document.addEventListener('DOMContentLoaded', () => {
+//   loadFeaturedMenu();
+// });
 
 // Scroll Progress Bar
 function updateScrollProgress() {
