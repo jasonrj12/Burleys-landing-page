@@ -2185,6 +2185,7 @@ footer {
   background: transparent;
   border: 2px solid #fa9f1b;
   color: #fa9f1b;
+  text-decoration: none;
 }
 
 .social-icon-btn:hover {
