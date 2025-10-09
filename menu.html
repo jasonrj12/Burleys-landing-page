@@ -126,13 +126,6 @@
             transform: translateY(0);
         }
         
-        .category-btn i {
-            transition: transform 0.3s ease;
-        }
-        
-        .category-btn:hover i {
-            transform: scale(1.2);
-        }
         
         @media (hover: none) {
             .category-btn:hover {
@@ -368,11 +361,6 @@
                 gap: 0.5rem;
             }
             
-            .hero-section .bg-white.bg-opacity-20 {
-                font-size: 0.85rem;
-                padding: 0.4rem 0.8rem;
-            }
-            
             .sticky-header {
                 padding: 1rem 0.5rem;
             }
@@ -381,10 +369,6 @@
                 font-size: 0.85rem;
                 padding: 0.6rem 1rem;
                 min-height: 44px; /* Better touch target */
-            }
-            
-            .category-btn i {
-                font-size: 1rem;
             }
             
             .search-bar {
@@ -441,11 +425,6 @@
             .hero-section .inline-flex {
                 font-size: 0.9rem;
                 padding: 0.6rem 1.2rem;
-            }
-            
-            .hero-section .bg-white.bg-opacity-20 {
-                font-size: 0.75rem;
-                padding: 0.3rem 0.6rem;
             }
             
             .category-btn {
@@ -546,9 +525,6 @@
     <!-- Hero Section -->
     <div class="hero-section text-white py-20 px-4 text-center relative">
         <div class="max-w-4xl mx-auto relative z-10">
-            <div class="inline-block mb-4 px-4 py-2 bg-white bg-opacity-20 backdrop-blur-sm rounded-full text-sm font-semibold">
-                <i class="fas fa-utensils mr-2"></i>FULL MENU
-            </div>
             <h1 class="text-5xl md:text-7xl font-extrabold mb-6 relative z-10 drop-shadow-lg" style="font-family: 'Montserrat', Arial, sans-serif;">
                 Our Menu
             </h1>
@@ -562,18 +538,6 @@
                     Order Online Now
                     <i class="fas fa-arrow-right"></i>
                 </a>
-            </div>
-            
-            <div class="flex flex-wrap justify-center gap-4 text-sm">
-                <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-full px-4 py-2">
-                    <i class="fas fa-burger mr-2"></i>50+ Items
-                </div>
-                <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-full px-4 py-2">
-                    <i class="fas fa-star mr-2"></i>Fresh Daily
-                </div>
-                <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-full px-4 py-2">
-                    <i class="fas fa-leaf mr-2"></i>Quality Ingredients
-                </div>
             </div>
         </div>
     </div>
@@ -595,21 +559,58 @@
             </div>
 
             <!-- Category Filters -->
-            <div class="flex flex-wrap justify-center gap-2 md:gap-3">
+            <div id="categoryFilters" class="flex flex-wrap justify-center gap-2 md:gap-3">
+                <!-- Default categories - will be replaced by API categories if available -->
                 <button class="category-btn active px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="all">
-                    <i class="fas fa-th mr-1 md:mr-2"></i>All Items
+                    All Items
                 </button>
-                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="burgers">
-                    <i class="fas fa-burger mr-1 md:mr-2"></i>Burgers
+                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="beef-burgers">
+                    Beef Burgers
                 </button>
-                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="submarines">
-                    <i class="fas fa-bread-slice mr-1 md:mr-2"></i>Submarines
+                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="chicken-burgers">
+                    Chicken Burgers
                 </button>
-                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="beverages">
-                    <i class="fas fa-mug-soda mr-1 md:mr-2"></i>Beverages
+                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="seafood-burgers">
+                    Seafood Burgers
                 </button>
-                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="sides">
-                    <i class="fas fa-pizza-slice mr-1 md:mr-2"></i>Sides
+                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="veg-burgers">
+                    Veg Burgers
+                </button>
+                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="submarine">
+                    Submarine
+                </button>
+                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="shawarma">
+                    Shawarma
+                </button>
+                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="burdilla">
+                    Burdilla
+                </button>
+                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="rice">
+                    Rice
+                </button>
+                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="starters">
+                    Starters
+                </button>
+                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="alfredo-pasta">
+                    Alfredo Pasta
+                </button>
+                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="pasta">
+                    Pasta
+                </button>
+                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="frappelato">
+                    Frappelato
+                </button>
+                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="chillerz">
+                    Chillerz
+                </button>
+                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="gelato">
+                    Gelato
+                </button>
+                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="hot-beverages">
+                    Hot Beverages
+                </button>
+                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="cold-beverages">
+                    Cold Beverages
                 </button>
             </div>
         </div>
@@ -617,12 +618,6 @@
 
     <!-- Menu Items Grid -->
     <div class="max-w-7xl mx-auto px-4 py-12">
-        <div class="mb-8 text-center">
-            <p class="text-gray-600 text-lg">
-                <i class="fas fa-fire text-orange-500 mr-2"></i>
-                <span id="itemCount" class="font-bold text-gray-800">0</span> delicious items to choose from
-            </p>
-        </div>
         <div id="menuGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Menu items will be inserted here by JavaScript -->
         </div>
@@ -658,19 +653,11 @@
             <div class="absolute bottom-10 right-10 w-40 h-40 bg-orange-500 rounded-full blur-3xl"></div>
         </div>
         <div class="max-w-4xl mx-auto text-center relative z-10">
-            <div class="inline-block mb-4 px-4 py-2 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold">
-                <i class="fas fa-file-pdf mr-2"></i>FULL MENU AVAILABLE
-            </div>
-            <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">Download Our Complete Menu</h2>
-            <p class="text-gray-600 mb-8 text-lg">Want to browse offline? Get our full menu as a PDF and explore all our delicious offerings</p>
+            <h2 class="text-4xl font-bold mb-8 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">Download Our Complete Menu</h2>
             <a href="menu.pdf" download="Burleys-Menu.pdf" class="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-orange-400 to-orange-500 text-white rounded-full font-bold text-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 hover:scale-105 shadow-lg">
                 <i class="fas fa-download text-xl"></i>
                 Download Menu PDF
             </a>
-            <p class="text-gray-500 text-sm mt-6">
-                <i class="fas fa-info-circle mr-1"></i>
-                Updated regularly with new items and seasonal specials
-            </p>
         </div>
     </div>
 
@@ -1612,39 +1599,114 @@
             return numPrice.toLocaleString('en-LK', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
         }
 
+        // Load categories from Delivergate API
+        async function loadCategoriesFromAPI() {
+            try {
+                // console.log('Fetching categories from Delivergate API...');
+                const categoriesData = await DELIVERGATE_API.getCategories();
+                // console.log('Categories API Response:', categoriesData);
+                
+                if (categoriesData && categoriesData.data && Array.isArray(categoriesData.data)) {
+                    const categoryFilters = document.getElementById('categoryFilters');
+                    
+                    // Keep the "All Items" button
+                    const allItemsBtn = categoryFilters.querySelector('[data-category="all"]');
+                    
+                    // Clear all other buttons
+                    categoryFilters.innerHTML = '';
+                    
+                    // Re-add "All Items" button
+                    if (allItemsBtn) {
+                        categoryFilters.appendChild(allItemsBtn);
+                    }
+                    
+                    // Add category buttons from API
+                    const categoryMappings = [];
+                    categoriesData.data.forEach(category => {
+                        const categoryName = category.name || category.category_name || 'Unknown';
+                        const categorySlug = categoryName.toLowerCase()
+                            .replace(/[^a-z0-9]+/g, '-')
+                            .replace(/^-+|-+$/g, '');
+                        
+                        categoryMappings.push({ name: categoryName, slug: categorySlug });
+                        
+                        const button = document.createElement('button');
+                        button.className = 'category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400';
+                        button.setAttribute('data-category', categorySlug);
+                        button.textContent = categoryName;
+                        
+                        categoryFilters.appendChild(button);
+                    });
+                    
+                    // console.log(`✅ Loaded ${categoriesData.data.length} categories from API`);
+                    // console.log('📋 Category mappings:', categoryMappings);
+                    
+                    // Re-attach event listeners to the new buttons
+                    setupCategoryFilters();
+                    
+                    return true;
+                } else {
+                    // console.warn('No categories data received from API');
+                    return false;
+                }
+            } catch (error) {
+                // console.warn('Categories API Error:', error.message);
+                // console.log('Using default category filters...');
+                return false;
+            }
+        }
+
+        // Setup category filter event listeners
+        function setupCategoryFilters() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            if (categoryButtons && categoryButtons.length > 0) {
+                categoryButtons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        categoryButtons.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        currentCategory = btn.dataset.category;
+                        // console.log('🔍 Category selected:', currentCategory);
+                        // console.log('📦 Total menu items:', menuItems.length);
+                        // console.log('🏷️ Items in this category:', menuItems.filter(item => item.category === currentCategory).length);
+                        renderMenu();
+                    });
+                });
+                // console.log('✅ Category filters initialized with', categoryButtons.length, 'buttons');
+            }
+        }
+
         // Load menu from Delivergate API
         async function loadMenuFromAPI() {
             try {
-                console.log('Fetching menu from Delivergate API...');
+                // console.log('Fetching menu from Delivergate API...');
                 const apiURL = DELIVERGATE_API.getMenuURL();
-                console.log('API URL:', apiURL);
+                // console.log('API URL:', apiURL);
                 
                 const apiData = await DELIVERGATE_API.fetchWithTimeout(apiURL);
-                console.log('API Response:', apiData);
+                // console.log('API Response:', apiData);
                 
                 let processedItems = [];
                 
                 // Handle categorized data structure: { data: { "Category Name": [items], ... } }
                 if (apiData && apiData.data && typeof apiData.data === 'object' && !Array.isArray(apiData.data)) {
-                    console.log('Processing categorized menu structure...');
+                    // console.log('Processing categorized menu structure...');
                     Object.entries(apiData.data).forEach(([categoryName, items]) => {
                         if (Array.isArray(items)) {
+                            // Convert category name to slug format to match button data-category
+                            const categorySlug = categoryName.toLowerCase()
+                                .replace(/[^a-z0-9]+/g, '-')
+                                .replace(/^-+|-+$/g, '');
+                            
+                            // console.log(`📦 Processing category: "${categoryName}" → slug: "${categorySlug}" (${items.length} items)`);
+                            
                             items.forEach(item => {
-                                // Get category from API or map it
-                                let category = 'sides';
-                                const catName = categoryName.toLowerCase();
-                                
-                                if (catName.includes('burger')) category = 'burgers';
-                                else if (catName.includes('submarine') || catName.includes('sub')) category = 'submarines';
-                                else if (catName.includes('beverage') || catName.includes('drink') || catName.includes('coffee') || catName.includes('frappe') || catName.includes('gelato')) category = 'beverages';
-                                
                                 processedItems.push({
                                     id: item.id || item.item_id || item.product_id,
                                     name: item.title || item.name || item.item_name || 'Unknown Item',
                                     description: item.description || item.item_description || '',
                                     price: formatPrice(item.price || item.item_price || item.selling_price || 0),
                                     image: item.image_url || item.image || item.item_image || '🍔',
-                                    category: category
+                                    category: categorySlug
                                 });
                             });
                         }
@@ -1655,7 +1717,12 @@
                 }
                 
                 if (processedItems.length > 0) {
-                    console.log(`Successfully loaded ${processedItems.length} items from API`);
+                    // console.log(`✅ Successfully loaded ${processedItems.length} items from API`);
+                    
+                    // Log unique categories found in items
+                    const uniqueCategories = [...new Set(processedItems.map(item => item.category))];
+                    // console.log('📋 Categories found in items:', uniqueCategories);
+                    
                     menuItems = processedItems;
                     isLoadingFromAPI = false;
                     renderMenu();
@@ -1664,8 +1731,8 @@
                     throw new Error('No items received from API');
                 }
             } catch (error) {
-                console.warn('Delivergate API Error:', error.message);
-                console.log('Falling back to local menu data...');
+                // console.warn('Delivergate API Error:', error.message);
+                // console.log('Falling back to local menu data...');
                 menuItems = fallbackMenuItems;
                 isLoadingFromAPI = false;
                 renderMenu();
@@ -1725,13 +1792,10 @@
                 return matchesCategory && matchesSearch;
             });
 
-            // Update item count
-            const itemCount = document.getElementById('itemCount');
-            if (itemCount) {
-                itemCount.textContent = filteredItems.length;
-            }
+            // console.log(`🎯 Rendering: ${filteredItems.length} items (Category: "${currentCategory}", Search: "${currentSearch}")`);
 
             if (filteredItems.length === 0) {
+                // console.warn('⚠️ No items match the current filters');
                 menuGrid.classList.add('hidden');
                 noResults.classList.remove('hidden');
                 return;
@@ -1741,14 +1805,35 @@
             noResults.classList.add('hidden');
 
             menuGrid.innerHTML = filteredItems.map((item, index) => {
-                // Category badge styling
+                // Category badge styling - dynamic mapping based on category
                 const categoryInfo = {
-                    burgers: { icon: 'fa-burger', label: 'Burger', color: 'bg-red-100 text-red-600' },
-                    submarines: { icon: 'fa-bread-slice', label: 'Submarine', color: 'bg-yellow-100 text-yellow-600' },
-                    beverages: { icon: 'fa-mug-soda', label: 'Beverage', color: 'bg-blue-100 text-blue-600' },
-                    sides: { icon: 'fa-pizza-slice', label: 'Side', color: 'bg-green-100 text-green-600' }
+                    'beef-burgers': { icon: 'fa-burger', label: 'Beef Burger', color: 'bg-red-100 text-red-600' },
+                    'chicken-burgers': { icon: 'fa-burger', label: 'Chicken Burger', color: 'bg-orange-100 text-orange-600' },
+                    'seafood-burgers': { icon: 'fa-burger', label: 'Seafood Burger', color: 'bg-blue-100 text-blue-600' },
+                    'veg-burgers': { icon: 'fa-burger', label: 'Veg Burger', color: 'bg-green-100 text-green-600' },
+                    'submarine': { icon: 'fa-bread-slice', label: 'Submarine', color: 'bg-yellow-100 text-yellow-600' },
+                    'shawarma': { icon: 'fa-bread-slice', label: 'Shawarma', color: 'bg-amber-100 text-amber-600' },
+                    'burdilla': { icon: 'fa-bread-slice', label: 'Burdilla', color: 'bg-purple-100 text-purple-600' },
+                    'rice': { icon: 'fa-bowl-rice', label: 'Rice', color: 'bg-lime-100 text-lime-600' },
+                    'starters': { icon: 'fa-pizza-slice', label: 'Starter', color: 'bg-pink-100 text-pink-600' },
+                    'alfredo-pasta': { icon: 'fa-utensils', label: 'Alfredo Pasta', color: 'bg-orange-100 text-orange-600' },
+                    'pasta': { icon: 'fa-utensils', label: 'Pasta', color: 'bg-orange-100 text-orange-600' },
+                    'frappelato': { icon: 'fa-mug-hot', label: 'Frappelato', color: 'bg-blue-100 text-blue-600' },
+                    'chillerz': { icon: 'fa-glass-water', label: 'Chillerz', color: 'bg-cyan-100 text-cyan-600' },
+                    'gelato': { icon: 'fa-ice-cream', label: 'Gelato', color: 'bg-indigo-100 text-indigo-600' },
+                    'hot-beverages': { icon: 'fa-mug-hot', label: 'Hot Beverage', color: 'bg-red-100 text-red-600' },
+                    'cold-beverages': { icon: 'fa-glass-water', label: 'Cold Beverage', color: 'bg-blue-100 text-blue-600' }
                 };
-                const categoryData = categoryInfo[item.category] || { icon: 'fa-utensils', label: 'Item', color: 'bg-gray-100 text-gray-600' };
+                
+                // Get category display name from the button if available
+                const categoryBtn = document.querySelector(`[data-category="${item.category}"]`);
+                const categoryLabel = categoryBtn ? categoryBtn.textContent.trim() : (item.category || 'Item');
+                
+                const categoryData = categoryInfo[item.category] || { 
+                    icon: 'fa-utensils', 
+                    label: categoryLabel, 
+                    color: 'bg-gray-100 text-gray-600' 
+                };
                 
                 return `
                 <div class="menu-item-card bg-white rounded-2xl shadow-lg overflow-hidden fade-in" style="animation-delay: ${index * 0.05}s">
@@ -1773,7 +1858,7 @@
 
         // Initial Load - Wait for DOM to be ready
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('🔧 Menu page loaded, initializing...');
+            // console.log('🔧 Menu page loaded, initializing...');
             
             // Get DOM elements now that DOM is ready
             menuGrid = document.getElementById('menuGrid');
@@ -1781,23 +1866,29 @@
             categoryBtns = document.querySelectorAll('.category-btn');
             noResults = document.getElementById('noResults');
             
-            console.log('📋 DOM elements:', { menuGrid, searchInput, categoryBtns, noResults });
+            // console.log('📋 DOM elements:', { menuGrid, searchInput, categoryBtns, noResults });
+            
+            // Set up default category filters first
+            setupCategoryFilters();
             
             // Show loading state first
             renderMenu();
             
-            // Then load from API
+            // Load categories from API (will replace default categories if successful)
+            loadCategoriesFromAPI();
+            
+            // Then load menu items from API
             loadMenuFromAPI();
             
             // Ensure mobile navigation works
             const hamburgerBtn = document.getElementById('hamburger');
             const navLinksContainer = document.querySelector('.nav-links');
             
-            console.log('🍔 Hamburger button:', hamburgerBtn);
-            console.log('📱 Nav links container:', navLinksContainer);
+            // console.log('🍔 Hamburger button:', hamburgerBtn);
+            // console.log('📱 Nav links container:', navLinksContainer);
             
             if (hamburgerBtn && navLinksContainer) {
-                console.log('✅ Navigation elements found, setting up event listeners...');
+                // console.log('✅ Navigation elements found, setting up event listeners...');
                 const hamburgerIcon = hamburgerBtn.querySelector('i');
                 
                 const closeMenu = () => {
@@ -1807,7 +1898,7 @@
                     if (hamburgerIcon) {
                         hamburgerIcon.className = 'fas fa-bars';
                     }
-                    console.log('🔒 Menu closed');
+                    // console.log('🔒 Menu closed');
                 };
                 
                 const openMenu = () => {
@@ -1817,7 +1908,7 @@
                     if (hamburgerIcon) {
                         hamburgerIcon.className = 'fas fa-times';
                     }
-                    console.log('🔓 Menu opened');
+                    // console.log('🔓 Menu opened');
                 };
                 
                 const toggleMenu = () => {
@@ -1832,14 +1923,14 @@
                 hamburgerBtn.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    console.log('🖱️ Hamburger clicked!');
+                    // console.log('🖱️ Hamburger clicked!');
                     toggleMenu();
                 });
                 
                 // Close menu when clicking links
                 navLinksContainer.querySelectorAll('.nav-link').forEach(link => {
                     link.addEventListener('click', () => {
-                        console.log('🔗 Nav link clicked');
+                        // console.log('🔗 Nav link clicked');
                         closeMenu();
                     });
                 });
@@ -1849,7 +1940,7 @@
                     if (!navLinksContainer.contains(e.target) && !hamburgerBtn.contains(e.target)) {
                         const wasOpen = navLinksContainer.classList.contains('open');
                         if (wasOpen) {
-                            console.log('👆 Clicked outside menu');
+                            // console.log('👆 Clicked outside menu');
                             closeMenu();
                         }
                     }
@@ -1860,32 +1951,20 @@
                     if (e.key === 'Escape') {
                         const wasOpen = navLinksContainer.classList.contains('open');
                         if (wasOpen) {
-                            console.log('⌨️ Escape key pressed');
+                            // console.log('⌨️ Escape key pressed');
                             closeMenu();
                         }
                     }
                 });
                 
-                console.log('✅ Navigation initialized successfully!');
+                // console.log('✅ Navigation initialized successfully!');
             } else {
-                console.error('❌ Navigation elements not found!');
-                console.error('Hamburger:', hamburgerBtn);
-                console.error('Nav Links:', navLinksContainer);
+                // console.error('❌ Navigation elements not found!');
+                // console.error('Hamburger:', hamburgerBtn);
+                // console.error('Nav Links:', navLinksContainer);
             }
             
-            // Set up category filter buttons
-            const categoryButtons = document.querySelectorAll('.category-btn');
-            if (categoryButtons && categoryButtons.length > 0) {
-                categoryButtons.forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        categoryButtons.forEach(b => b.classList.remove('active'));
-                        btn.classList.add('active');
-                        currentCategory = btn.dataset.category;
-                        renderMenu();
-                    });
-                });
-                console.log('✅ Category filters initialized');
-            }
+            // Category filters will be set up after loading from API via setupCategoryFilters()
             
             // Set up search functionality
             const searchField = document.getElementById('searchInput');
@@ -1894,7 +1973,7 @@
                     currentSearch = e.target.value;
                     renderMenu();
                 });
-                console.log('✅ Search functionality initialized');
+                // console.log('✅ Search functionality initialized');
             }
             
             // Smooth scroll for navigation
@@ -1908,9 +1987,10 @@
                 });
             });
             
-            console.log('🎉 All initializations complete!');
+            // console.log('🎉 All initializations complete!');
         });
     </script>
+    <script src="delivergate-api-config.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
