@@ -2,14 +2,14 @@
 const DELIVERGATE_API = {
   baseURL: 'https://pos-dev.delivergate.com/api/v1/webshop',
   endpoints: {
-    categories: '/categories/webshop-brand/1/shop/2',
-    mainMenu: '/main-menu/{categoryId}/categories/webshop-brand/1/shop/2'
+    categories: '/categories/webshop-brand/1/shop/1',
+    mainMenu: '/main-menu/{categoryId}/categories/webshop-brand/1/shop/1'
   },
   
   // Configuration
   config: {
     webshopBrand: 1,
-    shop: 2,
+    shop: 1,
     featuredCategoryId: 65, // Main featured category ID
     timeout: 10000, // 10 seconds timeout
     retryAttempts: 3

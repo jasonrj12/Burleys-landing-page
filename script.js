@@ -407,8 +407,8 @@ if (backToTopBtn) {
 const DELIVERGATE_API = {
   baseURL: 'https://pos-dev.delivergate.com/api/v1/webshop',
   categoryId: null, // Will be set dynamically from categories
-  webshopBrand: 5,
-  shop: 3,
+  webshopBrand: 1,
+  shop: 1,
   timeout: 10000,
   useLocalFallback: true, // Set to false to force API-only mode
   
