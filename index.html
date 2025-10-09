@@ -5,10 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Burley's - Burgers & Beyond</title>
   <meta name="description" content="Burley's - Every bite, a burst of flavour! Enjoy the best Burgers, Submarines, Spaghetti, Burdilla, and Chillerz in Colombo. Order online or visit our locations today!" />
+  
+  <!-- Resource Hints for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://burleys-webshop.delivergate.com">
+  
+  <!-- Critical CSS -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="navstyle.css">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@900;700;400&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Optimized Font Loading with display=swap -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet"></noscript>
+  
+  <!-- Font Awesome - Deferred -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+  
   <link rel="icon" href="images/logo.png" type="image/x-icon">
   <link rel="preload" as="image" href="images/burger3.webp" fetchpriority="high">
 
@@ -110,8 +125,11 @@
     </header>
 
     <div class="top-burger-image">
-      <img src="images/burger3.webp" alt="Juicy Burger Top View | Burley's Colombo" loading="lazy" decoding="async"
-       style="width: 100%; max-width: 800px; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.3));" fetchpriority="high" />
+      <img src="images/burger3.webp" alt="Juicy Burger Top View | Burley's Colombo" 
+           width="800" height="600"
+           loading="eager" decoding="async"
+           style="width: 100%; max-width: 800px; height: auto; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.3));" 
+           fetchpriority="high" />
     </div>
     <main>
       <section class="hero">
@@ -150,15 +168,22 @@
 
 
       <section class="app-download">
-        <img src="images/mobile app mockup.webp" alt="Burley's Mobile App for Food Delivery" style="display:block;margin:0 auto 1rem auto;max-width:700px;width:100vw;height:auto;" loading="lazy" decoding="async" fetchpriority="low" />
+        <img src="images/mobile app mockup.webp" alt="Burley's Mobile App for Food Delivery" 
+             width="700" height="500"
+             style="display:block;margin:0 auto 1rem auto;max-width:700px;width:100%;height:auto;" 
+             loading="lazy" decoding="async" fetchpriority="low" />
         <h2>Get the Burley's App for Easy Ordering</h2>
         <p class="description">Order faster and get exclusive deals. Download our app now!</p>
         <div class="app-badges">
-          <a href="https://apps.apple.com/lk/app/burleys/id6749331040" class="app-badge" aria-label="Download on the App Store" target="_blank">
-            <img src="images/apple-store.logo.svg" alt="Download Burley's App on Apple Store" style="height:48px" loading="lazy" decoding="async" fetchpriority="low">
+          <a href="https://apps.apple.com/lk/app/burleys/id6749331040" class="app-badge" aria-label="Download on the App Store" target="_blank" rel="noopener">
+            <img src="images/apple-store.logo.svg" alt="Download Burley's App on Apple Store" 
+                 width="135" height="48"
+                 style="height:48px;width:auto;" loading="lazy" decoding="async">
           </a>
-          <a href="https://play.google.com/store/apps/details?id=com.mitakeaway.burleys" class="app-badge" aria-label="Get it on Google Play" target="_blank">
-            <img src="images/google-play.logo.svg" alt="Get Burley's App on Google Play" style="height:48px" loading="lazy" decoding="async" fetchpriority="low">
+          <a href="https://play.google.com/store/apps/details?id=com.mitakeaway.burleys" class="app-badge" aria-label="Get it on Google Play" target="_blank" rel="noopener">
+            <img src="images/google-play.logo.svg" alt="Get Burley's App on Google Play" 
+                 width="135" height="48"
+                 style="height:48px;width:auto;" loading="lazy" decoding="async">
           </a>
         </div>
       </section>
@@ -191,7 +216,8 @@
       <div class="footer-wrap">
         <!-- Logo & Social -->
         <div class="footer-brand-section">
-          <img src="images/logo white.png" alt="Burley's" class="footer-brand-logo">
+          <img src="images/logo white.png" alt="Burley's" class="footer-brand-logo" 
+               width="110" height="110" loading="lazy">
           <p class="footer-slogan">Every Bite, A Burst of Flavour</p>
           <div class="footer-social-row">
             <a href="https://www.facebook.com/burleysfoods" class="social-icon-btn facebook" target="_blank" rel="noopener" aria-label="Facebook">
@@ -250,6 +276,6 @@
     </footer>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

@@ -4,12 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Menu - Burley's</title>
-    <link rel="icon" type="image/x-icon" href="images/logo.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@900;700;500;400&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="navstyle.css">
     <meta name="description" content="Explore Burley's delicious menu featuring signature burgers, hearty submarines, and refreshing beverages." />
+    
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
+    
+    <!-- Optimized CSS Loading -->
+    <link rel="stylesheet" href="navstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+    
+  <!-- Fonts - Deferred with display=swap -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet"></noscript>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
     <style>
         /* Scroll Progress Bar */
         .scroll-progress-container {
@@ -1386,6 +1401,6 @@
             });
         });
     </script>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
