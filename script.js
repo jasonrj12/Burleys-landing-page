@@ -745,6 +745,24 @@ document.addEventListener('DOMContentLoaded', () => {
   loadFeaturedMenu();
 });
 
+// Scroll Progress Bar
+function updateScrollProgress() {
+  const scrollProgressBar = document.getElementById('scrollProgressBar');
+  if (!scrollProgressBar) return;
+  
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+  
+  scrollProgressBar.style.width = scrolled + "%";
+}
+
+// Update progress on scroll
+window.addEventListener('scroll', updateScrollProgress);
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', updateScrollProgress);
+
 // Console Signature
 (() => {
   const titleStyle = [
