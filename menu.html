@@ -16,8 +16,8 @@
     
     <!-- Optimized CSS Loading -->
     <link rel="stylesheet" href="navstyle.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     
   <!-- Fonts - Deferred with display=swap -->
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -47,12 +47,19 @@
 
         html {
             scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
         }
         
         body {
             font-family: 'Roboto', Arial, sans-serif;
             background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
             position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        * {
+            -webkit-tap-highlight-color: transparent;
         }
         
         body::before {
@@ -76,6 +83,9 @@
             position: relative;
             overflow: hidden;
             border: 2px solid #e5e7eb;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
         }
         
         .category-btn::before {
@@ -95,6 +105,11 @@
             box-shadow: 0 4px 12px rgba(250, 159, 27, 0.2);
         }
         
+        .category-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 6px rgba(250, 159, 27, 0.2);
+        }
+        
         .category-btn:hover::before {
             left: 100%;
         }
@@ -107,12 +122,26 @@
             border-color: transparent;
         }
         
+        .category-btn.active:active {
+            transform: translateY(0);
+        }
+        
         .category-btn i {
             transition: transform 0.3s ease;
         }
         
         .category-btn:hover i {
             transform: scale(1.2);
+        }
+        
+        @media (hover: none) {
+            .category-btn:hover {
+                transform: none;
+            }
+            
+            .category-btn.active {
+                transform: none;
+            }
         }
         
         /* Modern Menu Cards */
@@ -147,6 +176,18 @@
             transform: translateY(-8px);
             box-shadow: 0 12px 40px rgba(0,0,0,0.12);
             border-color: rgba(250, 159, 27, 0.3);
+        }
+        
+        @media (hover: none) {
+            .menu-item-card:hover {
+                transform: none;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+                border-color: rgba(0,0,0,0.08);
+            }
+            
+            .menu-item-card:hover::before {
+                transform: scaleY(0);
+            }
         }
         
         .menu-item-card > div {
@@ -189,11 +230,18 @@
             transition: all 0.3s ease;
             background: white;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding-right: 3rem;
         }
         
         .search-bar:focus {
             box-shadow: 0 4px 20px rgba(250, 159, 27, 0.2);
             transform: translateY(-2px);
+            outline: none;
+        }
+        
+        .search-bar:focus-visible {
+            outline: 2px solid #fa9f1b;
+            outline-offset: 2px;
         }
         
         .fade-in {
@@ -250,14 +298,19 @@
         .sticky-header {
             position: sticky;
             top: 0;
-            z-index: 50;
+            z-index: 100;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
         
         /* Ensure content appears above background */
-        header, main, footer, .hero-section, .sticky-header {
+        .site-header {
+            position: relative;
+            z-index: 1000;
+        }
+        
+        main, footer, .hero-section {
             position: relative;
             z-index: 1;
         }
@@ -297,6 +350,53 @@
         
         /* Responsive Design */
         @media (max-width: 768px) {
+            .hero-section {
+                padding: 3rem 1rem;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.5rem !important;
+            }
+            
+            .hero-section p {
+                font-size: 1.1rem !important;
+            }
+            
+            .hero-section .inline-flex {
+                font-size: 1rem;
+                padding: 0.7rem 1.5rem;
+                gap: 0.5rem;
+            }
+            
+            .hero-section .bg-white.bg-opacity-20 {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.8rem;
+            }
+            
+            .sticky-header {
+                padding: 1rem 0.5rem;
+            }
+            
+            .category-btn {
+                font-size: 0.85rem;
+                padding: 0.6rem 1rem;
+                min-height: 44px; /* Better touch target */
+            }
+            
+            .category-btn i {
+                font-size: 1rem;
+            }
+            
+            .search-bar {
+                font-size: 1rem;
+                padding: 0.75rem 2.5rem 0.75rem 1rem;
+            }
+            
+            .search-bar + i {
+                right: 1rem;
+                font-size: 1.1rem;
+            }
+            
             .menu-item-card {
                 min-height: auto;
             }
@@ -305,9 +405,95 @@
                 font-size: 1.1rem;
             }
             
+            .menu-item-card p {
+                font-size: 0.9rem;
+            }
+            
             .price-badge {
-                font-size: 1rem;
+                font-size: 0.95rem;
                 padding: 0.4rem 0.8rem;
+                min-width: 80px;
+            }
+            
+            #backToTop {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 2rem 0.75rem;
+            }
+            
+            .hero-section h1 {
+                font-size: 2rem !important;
+                margin-bottom: 1rem;
+            }
+            
+            .hero-section p {
+                font-size: 1rem !important;
+            }
+            
+            .hero-section .inline-flex {
+                font-size: 0.9rem;
+                padding: 0.6rem 1.2rem;
+            }
+            
+            .hero-section .bg-white.bg-opacity-20 {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.6rem;
+            }
+            
+            .category-btn {
+                font-size: 0.8rem;
+                padding: 0.5rem 0.75rem;
+            }
+            
+            .search-bar {
+                padding: 0.6rem 2.5rem 0.6rem 0.8rem;
+                font-size: 0.95rem;
+            }
+            
+            .search-bar + i {
+                right: 0.8rem;
+                font-size: 1rem;
+            }
+            
+            .menu-item-card h3 {
+                font-size: 1rem;
+            }
+            
+            .menu-item-card p {
+                font-size: 0.85rem;
+            }
+        }
+        
+        /* Fallback mobile navigation styles - ensure hamburger menu works */
+        @media (max-width: 900px) {
+            .hamburger {
+                display: inline-flex !important;
+                z-index: 1001;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: linear-gradient(150deg, rgba(45, 41, 38, 0.98) 0%, rgba(29, 26, 24, 0.92) 100%);
+                padding: 1.25rem 1rem;
+                border-radius: 0 0 18px 18px;
+                box-shadow: 0 18px 36px rgba(0, 0, 0, 0.25);
+            }
+            
+            .nav-links.open {
+                display: flex !important;
             }
         }
     </style>
@@ -409,21 +595,21 @@
             </div>
 
             <!-- Category Filters -->
-            <div class="flex flex-wrap justify-center gap-3">
-                <button class="category-btn active px-6 py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="all">
-                    <i class="fas fa-th mr-2"></i>All Items
+            <div class="flex flex-wrap justify-center gap-2 md:gap-3">
+                <button class="category-btn active px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="all">
+                    <i class="fas fa-th mr-1 md:mr-2"></i>All Items
                 </button>
-                <button class="category-btn px-6 py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="burgers">
-                    <i class="fas fa-burger mr-2"></i>Burgers
+                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="burgers">
+                    <i class="fas fa-burger mr-1 md:mr-2"></i>Burgers
                 </button>
-                <button class="category-btn px-6 py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="submarines">
-                    <i class="fas fa-bread-slice mr-2"></i>Submarines
+                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="submarines">
+                    <i class="fas fa-bread-slice mr-1 md:mr-2"></i>Submarines
                 </button>
-                <button class="category-btn px-6 py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="beverages">
-                    <i class="fas fa-mug-soda mr-2"></i>Beverages
+                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="beverages">
+                    <i class="fas fa-mug-soda mr-1 md:mr-2"></i>Beverages
                 </button>
-                <button class="category-btn px-6 py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="sides">
-                    <i class="fas fa-pizza-slice mr-2"></i>Sides
+                <button class="category-btn px-4 py-2 md:px-6 md:py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="sides">
+                    <i class="fas fa-pizza-slice mr-1 md:mr-2"></i>Sides
                 </button>
             </div>
         </div>
@@ -1603,7 +1789,92 @@
         renderMenu(); // Show loading state immediately
         
         document.addEventListener('DOMContentLoaded', () => {
+            console.log('🔧 Menu page loaded, initializing...');
             loadMenuFromAPI();
+            
+            // Ensure mobile navigation works
+            const hamburgerBtn = document.getElementById('hamburger');
+            const navLinksContainer = document.querySelector('.nav-links');
+            
+            console.log('🍔 Hamburger button:', hamburgerBtn);
+            console.log('📱 Nav links container:', navLinksContainer);
+            
+            if (hamburgerBtn && navLinksContainer) {
+                console.log('✅ Navigation elements found, setting up event listeners...');
+                const hamburgerIcon = hamburgerBtn.querySelector('i');
+                
+                const closeMenu = () => {
+                    navLinksContainer.classList.remove('open');
+                    hamburgerBtn.classList.remove('active');
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
+                    if (hamburgerIcon) {
+                        hamburgerIcon.className = 'fas fa-bars';
+                    }
+                    console.log('🔒 Menu closed');
+                };
+                
+                const openMenu = () => {
+                    navLinksContainer.classList.add('open');
+                    hamburgerBtn.classList.add('active');
+                    hamburgerBtn.setAttribute('aria-expanded', 'true');
+                    if (hamburgerIcon) {
+                        hamburgerIcon.className = 'fas fa-times';
+                    }
+                    console.log('🔓 Menu opened');
+                };
+                
+                const toggleMenu = () => {
+                    const isOpen = navLinksContainer.classList.contains('open');
+                    if (isOpen) {
+                        closeMenu();
+                    } else {
+                        openMenu();
+                    }
+                };
+                
+                hamburgerBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('🖱️ Hamburger clicked!');
+                    toggleMenu();
+                });
+                
+                // Close menu when clicking links
+                navLinksContainer.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        console.log('🔗 Nav link clicked');
+                        closeMenu();
+                    });
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!navLinksContainer.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                        const wasOpen = navLinksContainer.classList.contains('open');
+                        if (wasOpen) {
+                            console.log('👆 Clicked outside menu');
+                            closeMenu();
+                        }
+                    }
+                });
+                
+                // Close menu on escape key
+                document.addEventListener('keyup', (e) => {
+                    if (e.key === 'Escape') {
+                        const wasOpen = navLinksContainer.classList.contains('open');
+                        if (wasOpen) {
+                            console.log('⌨️ Escape key pressed');
+                            closeMenu();
+                        }
+                    }
+                });
+                
+                console.log('✅ Navigation initialized successfully!');
+            } else {
+                console.error('❌ Navigation elements not found!');
+                console.error('Hamburger:', hamburgerBtn);
+                console.error('Nav Links:', navLinksContainer);
+            }
         });
 
         // Smooth scroll for navigation
@@ -1617,6 +1888,6 @@
             });
         });
     </script>
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
 </body>
 </html>
