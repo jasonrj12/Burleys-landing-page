@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Burley's - Burgers & Beyond</title>
+  <meta name="description" content="Burley's - Every bite, a burst of flavour! Enjoy the best Burgers, Submarines, Spaghetti, Burdilla, and Chillerz in Colombo. Order online or visit our locations today!" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="navstyle.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@900;700;400&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="images/logo.png" type="image/x-icon">
+  <link rel="preload" as="image" href="images/burger3.webp" fetchpriority="high">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Burley's - Burgers & Beyond" />
+  <meta property="og:description" content="Every bite, a burst of flavour. Order your favorite Burgers, Spaghetti, Submarines, Burdilla, and more at Burley's!" />
+  <meta property="og:image" content="https://burleys.netlify.app/images/logo.png" />
+  <meta property="og:url" content="https://burleys.netlify.app/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Burley's" />
+
+  <!-- Social Media Meta Tags -->
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
+  <meta name="instagram:card" content="summary_large_image" />
+  <meta name="instagram:title" content="Burley's - Burgers & Beyond" />
+  <meta name="instagram:description" content="Every bite, a burst of flavour. Order now and experience Burley's best menu items." />
+  <meta name="instagram:image" content="https://burleys.netlify.app/images/logo.png" />
+
+  <!-- Local Business Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Burley's",
+    "image": "https://burleys.netlify.app/images/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "32 Galle Road",
+      "addressLocality": "Colombo 04",
+      "addressCountry": "LK"
+    },
+    "telephone": "+94 11 4670 670",
+    "servesCuisine": ["Burgers", "Spaghetti", "Submarines", "Fast Food"],
+    "url": "https://burleys.netlify.app/",
+    "sameAs": [
+      "https://www.facebook.com/share/1Um5CkKLTN/",
+      "https://www.instagram.com/burleysfoods"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-logo">
+      <img src="images/logo color.png" alt="Burley's Logo | Colombo Fast Food" style="width: 100%; height: 100%; object-fit: contain;" loading="eager" fetchpriority="high" decoding="async">
+    </div>
+    <div class="loading-text">Welcome to Burley's</div>
+    <div class="modern-loader">
+      <svg class="progress-ring" width="80" height="80">
+        <circle class="progress-ring-circle" stroke="#fff" stroke-width="3" fill="transparent" r="36" cx="40" cy="40"/>
+      </svg>
+      <div class="loader-icons">
+        <span class="icon-rotate"><i class="fa-solid fa-burger"></i></span>
+        <span class="icon-rotate"><i class="fa-solid fa-pizza-slice"></i></span>
+        <span class="icon-rotate"><i class="fa-solid fa-mug-hot"></i></span>
+      </div>
+    </div>
+    <div class="loading-subtext">Your feast is loading...</div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-content">
+        <img src="images/promo.webp" loading="lazy" decoding="async" fetchpriority="low"
+             alt="Burley's Special Offer Promo | Best Deals Colombo"
+             style="width: 100%; height: auto; border-radius: 12px;">
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content" id="mainContent">
+    <header class="site-header">
+      <nav class="navbar" id="navbar">
+        <a class="logo" href="index.html" aria-label="Burley's home">
+          <img src="images/logo color.png" alt="Burley's Logo | Best Burgers Colombo" decoding="async" fetchpriority="low">
+        </a>
+        <button id="hamburger" class="hamburger" type="button" aria-controls="primaryNav" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="primaryNav">
+          <li><a href="index.html" class="nav-link"><i class="fa-solid fa-home"></i><span>Home</span></a></li>
+          <li><a href="menu.html" class="nav-link"><i class="fa-solid fa-utensils"></i><span>Menu</span></a></li>
+          <li><a href="story.html" class="nav-link"><i class="fa-solid fa-book"></i><span>Our Story</span></a></li>
+          <li><a href="locations.html" class="nav-link"><i class="fa-solid fa-location-dot"></i><span>Our Locations</span></a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="top-burger-image">
+      <img src="images/burger3.webp" alt="Juicy Burger Top View | Burley's Colombo" loading="lazy" decoding="async"
+       style="width: 100%; max-width: 800px; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.3));" fetchpriority="high" />
+    </div>
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <h1> Every bite, a burst of flavour </h1>
+           <a href="https://burleys-webshop.delivergate.com/" class="cta-btn" target="_blank" rel="noopener noreferrer">ORDER NOW</a>
+        </div>       
+      </section>
+
+ <section class="featured-menu-section">
+  <div class="menu-header">
+    <h2>Signature Menu</h2>
+    <p class="menu-subtitle">Crafted with Passion</p>
+  </div>
+
+  <!-- Loading State -->
+  <div id="menuLoading" class="menu-loading" style="text-align: center; padding: 2rem;">
+    <div class="loading-spinner"></div>
+    <p style="margin-top: 1rem; color: #666;">Loading menu items...</p>
+  </div>
+
+  <!-- Error State -->
+  <div id="menuError" class="menu-error" style="display: none; text-align: center; padding: 2rem;">
+    <!-- Error content will be populated by JavaScript -->
+  </div>
+
+  <!-- Menu Container (populated by JavaScript) -->
+  <div id="menuContainer" class="menu-list-container" style="display: none;">
+    <!-- Menu items will be dynamically loaded here -->
+  </div>
+
+  <div style="text-align:center;">
+    <a href="menu.html" class="view-menu-btn">View Full Menu</a>
+  </div>
+</section>
+
+
+      <section class="app-download">
+        <img src="images/mobile app mockup.webp" alt="Burley's Mobile App for Food Delivery" style="display:block;margin:0 auto 1rem auto;max-width:700px;width:100vw;height:auto;" loading="lazy" decoding="async" fetchpriority="low" />
+        <h2>Get the Burley's App for Easy Ordering</h2>
+        <p class="description">Order faster and get exclusive deals. Download our app now!</p>
+        <div class="app-badges">
+          <a href="https://apps.apple.com/lk/app/burleys/id6749331040" class="app-badge" aria-label="Download on the App Store" target="_blank">
+            <img src="images/apple-store.logo.svg" alt="Download Burley's App on Apple Store" style="height:48px" loading="lazy" decoding="async" fetchpriority="low">
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.mitakeaway.burleys" class="app-badge" aria-label="Get it on Google Play" target="_blank">
+            <img src="images/google-play.logo.svg" alt="Get Burley's App on Google Play" style="height:48px" loading="lazy" decoding="async" fetchpriority="low">
+          </a>
+        </div>
+      </section>
+
+      <section class="reviews">
+        <h2>Customer Reviews – Why Colombo Loves Burley's</h2>
+        <div class="reviews-carousel">
+          <button class="review-arrow" id="reviewPrev" aria-label="Previous review"><i class="fa-solid fa-chevron-left"></i></button>
+          <div class="review-slide" id="reviewSlide"></div>
+          <button class="review-arrow" id="reviewNext" aria-label="Next review"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" title="Back to Top | Burley's Burgers & Fast Food Colombo"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/94774670670" class="whatsapp-float" target="_blank" aria-label="Chat with us on WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <footer class="minimalist-footer">
+      <div class="footer-wave">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#fa9f1b"></path>
+        </svg>
+      </div>
+      
+      <div class="footer-wrap">
+        <!-- Logo & Social -->
+        <div class="footer-brand-section">
+          <img src="images/logo white.png" alt="Burley's" class="footer-brand-logo">
+          <p class="footer-slogan">Every Bite, A Burst of Flavour</p>
+          <div class="footer-social-row">
+            <a href="https://www.facebook.com/burleysfoods" class="social-icon-btn facebook" target="_blank" rel="noopener" aria-label="Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/burleysfoods" class="social-icon-btn instagram" target="_blank" rel="noopener" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Info Cards -->
+        <div class="footer-cards">
+          <div class="info-card">
+            <div class="card-icon">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <h4>Visit Us</h4>
+            <p>32 Galle Road<br>Colombo - 04, Sri Lanka</p>
+          </div>
+
+          <div class="info-card">
+            <div class="card-icon">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <h4>Call Us</h4>
+            <p><a href="tel:+940114670670">+94 11 4670 670</a></p>
+          </div>
+
+          <div class="info-card">
+            <div class="card-icon">
+              <i class="fa-solid fa-clock"></i>
+            </div>
+            <h4>Opening Hours</h4>
+            <p>Mon-Fri: 10AM - 11PM<br>Sat-Sun: 9AM - 12AM</p>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-menu">
+          <a href="index.html">Home</a>
+          <span class="separator">•</span>
+          <a href="menu.html">Menu</a>
+          <span class="separator">•</span>
+          <a href="story.html">Our Story</a>
+          <span class="separator">•</span>
+          <a href="locations.html">Locations</a>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-credits">
+          <p>&copy; 2025 Burley's. All Rights Reserved.</p>
+          <p>Developed by <a href="https://delivergate.lk" target="_blank" rel="noopener">Delivergate LK</a></p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

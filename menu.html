@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Menu - Burley's</title>
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@900;700;500;400&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="navstyle.css">
+    <meta name="description" content="Explore Burley's delicious menu featuring signature burgers, hearty submarines, and refreshing beverages." />
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        
+        .category-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn.active {
+            background: linear-gradient(135deg, #fa9f1b 0%, #ff8c00 100%);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .menu-item-card {
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .search-bar {
+            transition: all 0.3s ease;
+        }
+        
+        .search-bar:focus {
+            box-shadow: 0 0 0 3px rgba(250, 159, 27, 0.2);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #fa9f1b 0%, #ff8c00 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        #backToTop {
+    display: none;               /* Hidden by default */
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 999;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Gradient */
+    color: white;
+    font-size: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+#backToTop:hover {
+    transform: translateY(-5px);       /* Slight lift */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    background: linear-gradient(135deg, #feb47b, #ff7e5f); /* Hover gradient */
+}
+
+footer {
+            background: #fa9f1b;
+            color: #3f1e27;
+            padding: 2rem 1rem 1rem 1rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <header class="site-header">
+        <nav class="navbar" id="navbar">
+            <a class="logo" href="index.html" aria-label="Burley's home">
+                <img src="images/logo color.png" alt="Burley's Logo">
+            </a>
+            <button id="hamburger" class="hamburger" type="button" aria-controls="primaryNav" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="primaryNav">
+                <li>
+                    <a href="index.html" class="nav-link">
+                        <i class="fa-solid fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="menu.html" class="nav-link" id="menuNavLink">
+                        <i class="fa-solid fa-utensils"></i>
+                        <span>Menu</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="story.html" class="nav-link">
+                        <i class="fa-solid fa-book"></i>
+                        <span>Our Story</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="locations.html" class="nav-link">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Our Locations</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero-section text-white py-16 px-4 text-center relative">
+        <h1 class="text-5xl md:text-6xl font-bold mb-4 relative z-10" style="font-family: 'Montserrat', Arial, sans-serif;">Our Menu</h1>
+        <p class="text-xl md:text-2xl relative z-10">Discover our delicious selection</p>
+    </div>
+
+    <!-- Search and Filter Section -->
+    <div class="sticky-header py-6 px-4">
+        <div class="max-w-7xl mx-auto">
+            <!-- Search Bar -->
+            <div class="mb-6">
+                <div class="relative max-w-2xl mx-auto">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Search for dishes..."
+                        class="search-bar w-full px-6 py-4 rounded-full border-2 border-gray-200 focus:border-orange-400 outline-none text-lg"
+                    />
+                    <i class="fas fa-search absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl"></i>
+                </div>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="flex flex-wrap justify-center gap-3">
+                <button class="category-btn active px-6 py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="all">
+                    <i class="fas fa-th mr-2"></i>All Items
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="burgers">
+                    <i class="fas fa-burger mr-2"></i>Burgers
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="submarines">
+                    <i class="fas fa-bread-slice mr-2"></i>Submarines
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="beverages">
+                    <i class="fas fa-mug-soda mr-2"></i>Beverages
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full bg-white border-2 border-gray-200 font-semibold hover:border-orange-400" data-category="sides">
+                    <i class="fas fa-pizza-slice mr-2"></i>Sides
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Items Grid -->
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <div id="menuGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Menu items will be inserted here by JavaScript -->
+        </div>
+        
+        <!-- No Results Message -->
+        <div id="noResults" class="hidden text-center py-16">
+            <i class="fas fa-search text-6xl text-gray-300 mb-4"></i>
+            <h3 class="text-2xl font-bold text-gray-600 mb-2">No items found</h3>
+            <p class="text-gray-500">Try adjusting your search or filter</p>
+        </div>
+    </div>
+
+    <!-- Download Menu Section -->
+    <div class="bg-white py-12 px-4 mt-12">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-4">Download Our Complete Menu</h2>
+            <p class="text-gray-600 mb-6">Want to browse offline? Download our full menu as a PDF</p>
+            <a href="menu.pdf" download="Burleys-Menu.pdf" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-400 to-orange-500 text-white rounded-full font-semibold text-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                <i class="fas fa-download"></i>
+                Download Menu PDF
+            </a>
+        </div>
+    </div>
+
+<button id="backToTop" title="Back to Top | Burley's Burgers & Fast Food Colombo"><i class="fas fa-arrow-up"></i></button>
+
+<footer>
+    <p>&copy; 2025 Burley's. All rights reserved.</p>
+    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.5rem;">
+     Developed by <a href="https://delivergate.lk" target="_blank" rel="noopener" style="color: #ffffff; text-decoration: none; font-weight: 600;">Delivergate LK</a>
+    </p>
+</footer>
+
+    <script>
+        // Menu Data
+        const menuItems = [
+            // Beef Burgers
+            {
+                name: "Big Burley",
+                category: "burgers",
+                description: "Grilled Beef Patty, Jalapeño Onion, Pickled Cucumber, Chicken Ham, Cheddar Cheese Slice, Shredded Iceberg Lettuce, Tomato, Frizzled Onion Rings, Green Chilli Pickle, Chef's Signature Sauce & Tomato Sauce",
+                price: "2,490",
+                image: "🍔"
+            },
+            {
+                name: "Cheese Meltdown",
+                category: "burgers",
+                description: "Grilled Beef Patty, Onion, Pickled Cucumber, Shredded Iceberg Lettuce, Tomato, Frizzled Onion Rings, Green Chilli Pickle, Chef's Signature Sauce & Tomato Sauce",
+                price: "1,490",
+                image: "🍔"
+            },
+            {
+                name: "Smokehouse BBQ",
+                category: "burgers",
+                description: "BBQ Beef Patty, Onion, Pickled Cucumber, Shredded Iceberg Lettuce, Tomato, Frizzled Onion Rings, Green Chilli Pickle, Chef's Signature Sauce & BBQ Sauce",
+                price: "1,690",
+                image: "🍔"
+            },
+            {
+                name: "Pioneer Beef",
+                category: "burgers",
+                description: "Beef Patty, Onion, Pickled Cucumber, Shredded Iceberg Lettuce, Tomato, Chef's Signature Sauce & Tomato Sauce",
+                price: "1,390",
+                image: "🍔"
+            },
+            {
+                name: "Mongolian Beef Burger",
+                category: "burgers",
+                description: "Mongolian Beef, Burger Sauce, Shredded Iceberg Lettuce, Tomato, Onion, Green Pickle, Slice Cheese",
+                price: "1,490",
+                image: "🍔"
+            },
+            {
+                name: "Fire Cracker",
+                category: "burgers",
+                description: "Grilled Beef Patty, Pickled Onion, Jalapeño Pickle, Green Chilli Pickle, Shredded Iceberg Lettuce, Tomato, Mango Habanero Sauce & Tomato Burger Sauce",
+                price: "1,490",
+                image: "🍔"
+            },
+            {
+                name: "Fish En-Fillet",
+                category: "burgers",
+                description: "Crispy Fish Fillet, Shredded Iceberg Lettuce, Pickled Onion, Tartar Sauce, Tomato & Tartar Sauce",
+                price: "1,390",
+                image: "🍔"
+            },
+            {
+                name: "Prawnflix",
+                category: "burgers",
+                description: "Deep Fried Prawns, Iceberg Lettuce, Tartar Sauce & White Tomato Sauce",
+                price: "1,490",
+                image: "🍔"
+            },
+            {
+                name: "Veg Paneer Crumb",
+                category: "burgers",
+                description: "Paneer Infused Vegetable Patty, Fresh Onion Rings, Tomato, Shredded Iceberg Lettuce, Chef's Signature Sauce & Tomato Sauce",
+                price: "1,290",
+                image: "🍔"
+            },
+            
+            // Burdilla
+            {
+                name: "Crispy Prawn Burdilla",
+                category: "burgers",
+                description: "Burdilla, Shredded Lettuce, Tomato, Pickled Onion, Chef's Signature Sauce & Tomato Sauce",
+                price: "1,490",
+                image: "🍔"
+            },
+            {
+                name: "Crispy Chicken Burdilla",
+                category: "burgers",
+                description: "Burdilla, Shredded Lettuce, Tomato, Pickled Onion, Chef's Signature Sauce & Tomato Sauce",
+                price: "1,490",
+                image: "🍔"
+            },
+            {
+                name: "Grilled Chicken Burdilla",
+                category: "burgers",
+                description: "Burdilla, Shredded Lettuce, Tomato, Pickled Onion, Chef's Signature Sauce & Tomato Sauce",
+                price: "1,490",
+                image: "🍔"
+            },
+            {
+                name: "Chili Chicken Burdilla",
+                category: "burgers",
+                description: "Burdilla, Shredded Lettuce, Tomato, Pickled Onion, Tossed Shredded Chicken in Chili Sauce, Chef's Signature Sauce",
+                price: "1,490",
+                image: "🍔"
+            },
+            
+            // Chicken Burgers
+            {
+                name: "Big Burley Chicken",
+                category: "burgers",
+                description: "Grilled Chicken Patty, Jalapeño Onion, Pickled Cucumber, Chicken Ham, Cheddar Cheese Slice, Shredded Iceberg Lettuce, Tomato, Frizzled Onion Rings, Green Chilli Pickle, Chef's Signature Sauce & Tomato Sauce",
+                price: "2,390",
+                image: "🍔"
+            },
+            {
+                name: "Smokehouse BBQ Chicken",
+                category: "burgers",
+                description: "Grilled Chicken Patty, Onion, Pickled Cucumber, Shredded Iceberg Lettuce, Tomato, Frizzled Onion Rings, Green Chilli Pickle, Chef's Signature Sauce & BBQ Sauce",
+                price: "1,690",
+                image: "🍔"
+            },
+            {
+                name: "Seoul Crunch",
+                category: "burgers",
+                description: "Hot Spicy Chicken Patty, Shredded Iceberg Lettuce, Pickled Onion, Hot Spicy Mayo",
+                price: "1,390",
+                image: "🍔"
+            },
+            {
+                name: "Chicken Joy",
+                category: "burgers",
+                description: "Grilled Chicken Patty, Shredded Iceberg Lettuce, Onion, Tomato Sauce & Burger Sauce",
+                price: "990",
+                image: "🍔"
+            },
+            {
+                name: "Wild Crunch Chicken",
+                category: "burgers",
+                description: "Ultimate Nachos Crumbed Chicken, Spicy Sauce",
+                price: "1,350",
+                image: "🍔"
+            },
+            {
+                name: "OG Crispy",
+                category: "burgers",
+                description: "Crispy Fried Chicken Fillet, Lettuce, Pickle, Chef's Signature Sauce, Cheese Slice",
+                price: "1,290",
+                image: "🍔"
+            },
+            {
+                name: "Chicken Shawarma",
+                category: "burgers",
+                description: "Jumbo Burley Shredded Chicken, Shredded Iceberg Lettuce, Pickled Onion, French Fries, Chef's Signature Sauce, Wrapped in Tortilla",
+                price: "1,450",
+                image: "🍔"
+            },
+            
+            // Submarines
+            {
+                name: "Zinger King",
+                category: "submarines",
+                description: "Crispy Chicken, Iceberg Lettuce, Green Chili Pickle, Hot Mayonnaise, Tomato Sauce",
+                price: "1,290",
+                image: "🥖"
+            },
+            {
+                name: "Prawns Po Boy",
+                category: "submarines",
+                description: "Butter Fried Crispy Prawns, Iceberg Lettuce, Lettuce, Tomato, Pickled Onion, Signature Sauce",
+                price: "1,750",
+                image: "🥖"
+            },
+            {
+                name: "Honey Glazed Chicken",
+                category: "submarines",
+                description: "Hot Honey Dipped Crispy Chicken Thigh, Hot Honey Mayo, Iceberg Lettuce, Red Onion, Green Chilli, Cucumber Pickle",
+                price: "1,650",
+                image: "🥖"
+            },
+            {
+                name: "Chicken Fajita",
+                category: "submarines",
+                description: "Fajita Chicken, Iceberg Lettuce, Fresh Onion Rings, Inferno Sauce & Tomato Burger Sauce",
+                price: "1,490",
+                image: "🥖"
+            },
+            {
+                name: "Mongolian Beef Submarine",
+                category: "submarines",
+                description: "Mongolian Beef, Burger Sauce, Shredded Iceberg Lettuce, Tomato, Onion, Green King",
+                price: "1,990",
+                image: "🥖"
+            },
+            {
+                name: "Devilled Chicken Submarine",
+                category: "submarines",
+                description: "Butter, Burger Sauce, Iceberg Lettuce, Tomato, Devilled Chicken",
+                price: "1,490",
+                image: "🥖"
+            },
+            {
+                name: "Fishery Crunch",
+                category: "submarines",
+                description: "Crispy Fried Fish Fillet, Tartar Sauce, Iceberg Lettuce, Pickled Cucumber, Tomato, Onion Rings",
+                price: "1,990",
+                image: "🥖"
+            },
+            
+            // Pasta - Alfredo
+            {
+                name: "Chicken Spaghetti",
+                category: "sides",
+                description: "Creamy Alfredo pasta with chicken",
+                price: "1,990",
+                image: "🍝"
+            },
+            {
+                name: "Vegetable Spaghetti",
+                category: "sides",
+                description: "Creamy Alfredo pasta with vegetables",
+                price: "1,690",
+                image: "🍝"
+            },
+            {
+                name: "Chicken Penne",
+                category: "sides",
+                description: "Creamy Alfredo penne with chicken",
+                price: "1,990",
+                image: "🍝"
+            },
+            {
+                name: "Prawns Penne",
+                category: "sides",
+                description: "Creamy Alfredo penne with prawns",
+                price: "2,490",
+                image: "🍝"
+            },
+            {
+                name: "Vegetable Penne",
+                category: "sides",
+                description: "Creamy Alfredo penne with vegetables",
+                price: "1,690",
+                image: "🍝"
+            },
+            
+            // Other Pasta
+            {
+                name: "Hot Chicken Spaghetti",
+                category: "sides",
+                description: "Spicy chicken spaghetti",
+                price: "950",
+                image: "🍝"
+            },
+            {
+                name: "Chicken Cheese Spaghetti",
+                category: "sides",
+                description: "Cheesy chicken spaghetti",
+                price: "1,390",
+                image: "🍝"
+            },
+            {
+                name: "Spicy Prawn Spaghetti",
+                category: "sides",
+                description: "Spicy spaghetti with prawns",
+                price: "1,190",
+                image: "🍝"
+            },
+            {
+                name: "Chili Chicken Penne",
+                category: "sides",
+                description: "Spicy chili chicken penne",
+                price: "1,550",
+                image: "🍝"
+            },
+            {
+                name: "Spicy Prawn Penne",
+                category: "sides",
+                description: "Spicy penne with prawns",
+                price: "1,490",
+                image: "🍝"
+            },
+            {
+                name: "Chicken Fajita Penne",
+                category: "sides",
+                description: "Fajita chicken penne",
+                price: "1,490",
+                image: "🍝"
+            },
+            {
+                name: "Chicken Cheese Penne",
+                category: "sides",
+                description: "Cheesy chicken penne",
+                price: "1,390",
+                image: "🍝"
+            },
+            {
+                name: "Hot Beef Spaghetti",
+                category: "sides",
+                description: "Spicy beef spaghetti",
+                price: "1,290",
+                image: "🍝"
+            },
+            {
+                name: "Mongolian Beef Penne",
+                category: "sides",
+                description: "Mongolian beef penne",
+                price: "1,690",
+                image: "🍝"
+            },
+            
+            // Crunchy Rice
+            {
+                name: "Crunchy Wing Rice",
+                category: "sides",
+                description: "Crispy chicken wings with rice",
+                price: "590",
+                image: "🍚"
+            },
+            {
+                name: "Chicken Fajita Rice",
+                category: "sides",
+                description: "Fajita chicken with rice",
+                price: "890",
+                image: "🍚"
+            },
+            {
+                name: "Crispy Chicken Rice",
+                category: "sides",
+                description: "Crispy chicken with rice",
+                price: "790",
+                image: "🍚"
+            },
+            {
+                name: "Crunchy Fish Rice",
+                category: "sides",
+                description: "Crispy fish with rice",
+                price: "890",
+                image: "🍚"
+            },
+            {
+                name: "Mongolian Beef Rice",
+                category: "sides",
+                description: "Mongolian beef with rice",
+                price: "890",
+                image: "🍚"
+            },
+            {
+                name: "Chicken Biriyani",
+                category: "sides",
+                description: "Traditional chicken biriyani",
+                price: "890",
+                image: "🍚"
+            },
+            
+            // Fried Items
+            {
+                name: "Hot Honey Crispy Chicken Wings (6 PCS)",
+                category: "sides",
+                description: "Hot honey glazed crispy wings",
+                price: "1,290",
+                image: "🍗"
+            },
+            {
+                name: "Chick N' Wings (6 PCS)",
+                category: "sides",
+                description: "Crispy chicken wings",
+                price: "890",
+                image: "🍗"
+            },
+            {
+                name: "Chick N' Chips (4 PCS)",
+                category: "sides",
+                description: "Chicken pieces with chips",
+                price: "1,290",
+                image: "🍗"
+            },
+            {
+                name: "Tender Crust (4 PCS)",
+                category: "sides",
+                description: "Crispy chicken tenders",
+                price: "990",
+                image: "🍗"
+            },
+            {
+                name: "Crispy Calamari & Chips (8 PCS)",
+                category: "sides",
+                description: "Crispy calamari with chips",
+                price: "1,690",
+                image: "🦑"
+            },
+            {
+                name: "Fries",
+                category: "sides",
+                description: "Golden crispy fries",
+                price: "790",
+                image: "🍟"
+            },
+            {
+                name: "Loaded Chicken Fries",
+                category: "sides",
+                description: "Fries loaded with chicken",
+                price: "1,590",
+                image: "🍟"
+            },
+            {
+                name: "Chick N' Nuggets (6 PCS)",
+                category: "sides",
+                description: "Crispy chicken nuggets",
+                price: "890",
+                image: "🍗"
+            },
+            {
+                name: "Chick N' Nuggets (9 PCS)",
+                category: "sides",
+                description: "Crispy chicken nuggets",
+                price: "1,190",
+                image: "🍗"
+            },
+            {
+                name: "Crispy Prawns (6 PCS)",
+                category: "sides",
+                description: "Deep fried crispy prawns",
+                price: "1,390",
+                image: "🍤"
+            },
+            {
+                name: "Fish N Chips (4 PCS)",
+                category: "sides",
+                description: "Crispy fish with chips",
+                price: "1,290",
+                image: "🐟"
+            },
+            
+            // Corn Dogs
+            {
+                name: "Corn Dog 4 Pcs Combo",
+                category: "sides",
+                description: "Assorted corn dogs combo",
+                price: "2,990",
+                image: "🌭"
+            },
+            {
+                name: "Classic Crispy Corn Dog",
+                category: "sides",
+                description: "Classic Burleys Sausage, Sweet Mild Sauce",
+                price: "790",
+                image: "🌭"
+            },
+            {
+                name: "Coconut Crisp",
+                category: "sides",
+                description: "Chicken Sausage, Hot Dog, Mozzarella Cheese, Desiccated Coconut, Honey Mustard Sauce",
+                price: "890",
+                image: "🌭"
+            },
+            {
+                name: "Fried Potato Corn Dog",
+                category: "sides",
+                description: "Chicken Sausage, Hot Dog, Mozzarella Cheese, Fried Potato, Hot Honey Sauce, Whipped Mayo",
+                price: "890",
+                image: "🌭"
+            },
+            {
+                name: "Hot & Spicy Corn Dog",
+                category: "sides",
+                description: "Chicken Sausage, Hot Dog, Mozzarella Cheese, Signature Sauce, Cheese, Sriracha Sauce",
+                price: "890",
+                image: "🌭"
+            },
+            
+            // Summer Drinks
+            {
+                name: "Blue Hawaiian",
+                category: "beverages",
+                description: "Tropical blue refreshment",
+                price: "890",
+                image: "🥤"
+            },
+            {
+                name: "Citron Glow",
+                category: "beverages",
+                description: "Citrus refreshing drink",
+                price: "890",
+                image: "🥤"
+            },
+            {
+                name: "Pink Berry Bliss",
+                category: "beverages",
+                description: "Berry flavored refreshment",
+                price: "890",
+                image: "🥤"
+            },
+            {
+                name: "Daffodils",
+                category: "beverages",
+                description: "Tropical summer drink",
+                price: "890",
+                image: "🥤"
+            },
+            {
+                name: "Berry Voila",
+                category: "beverages",
+                description: "Blueberry, Strawberry Syrup, Lemon, Mint Syrup & Top Up",
+                price: "890",
+                image: "🥤"
+            },
+            {
+                name: "Lush Tropics",
+                category: "beverages",
+                description: "Green Apple Syrup, Lemon, Mint Syrup & Top Up",
+                price: "890",
+                image: "🥤"
+            },
+            {
+                name: "Desert Dunes",
+                category: "beverages",
+                description: "Mango & Pineapple Syrup, Lemon, Fresh Lime Slices, Mint Syrup & Top Up",
+                price: "890",
+                image: "🥤"
+            },
+            {
+                name: "Granny Smith Punch",
+                category: "beverages",
+                description: "Green Apple Syrup, Mint Leaves, Lemon, Mint Syrup & Top Up",
+                price: "890",
+                image: "🥤"
+            },
+            {
+                name: "Tropical Plush",
+                category: "beverages",
+                description: "Pine Apple Puree, Fresh Lime Slices, Lemon, Mint Syrup & Top Up",
+                price: "890",
+                image: "🥤"
+            },
+            {
+                name: "Waikiki Sunset",
+                category: "beverages",
+                description: "Raspberry Puree, Watermelon Syrup, Fresh Lime Slices, Mint Syrup & Top Up",
+                price: "890",
+                image: "🥤"
+            },
+            {
+                name: "Lime Mint",
+                category: "beverages",
+                description: "Fresh Lime Slices, Mint leaves, Lemon, Mint Syrup & Top Up",
+                price: "690",
+                image: "🥤"
+            },
+            
+            // Frappelato
+            {
+                name: "Strawberry Pink Kiss",
+                category: "beverages",
+                description: "Strawberry frappelato (Topping optional, Whipped Cream Rs. 250 extra)",
+                price: "990",
+                image: "🥤"
+            },
+            {
+                name: "Chocolate Delight",
+                category: "beverages",
+                description: "Chocolate frappelato (Topping optional, Whipped Cream Rs. 250 extra)",
+                price: "990",
+                image: "🥤"
+            },
+            {
+                name: "Biscoff Blast",
+                category: "beverages",
+                description: "Biscoff frappelato (Topping optional, Whipped Cream Rs. 250 extra)",
+                price: "990",
+                image: "🥤"
+            },
+            {
+                name: "French Vanilla",
+                category: "beverages",
+                description: "French vanilla frappelato (Topping optional, Whipped Cream Rs. 250 extra)",
+                price: "990",
+                image: "🥤"
+            },
+            {
+                name: "Passion Fusion",
+                category: "beverages",
+                description: "Passion fruit frappelato (Topping optional, Whipped Cream Rs. 250 extra)",
+                price: "990",
+                image: "🥤"
+            },
+            {
+                name: "Mint Choco Chip",
+                category: "beverages",
+                description: "Mint chocolate chip frappelato (Topping optional, Whipped Cream Rs. 250 extra)",
+                price: "990",
+                image: "🥤"
+            },
+            {
+                name: "Mango Cashew",
+                category: "beverages",
+                description: "Mango cashew frappelato (Topping optional, Whipped Cream Rs. 250 extra)",
+                price: "990",
+                image: "🥤"
+            },
+            {
+                name: "Caramel Toffee Crunch",
+                category: "beverages",
+                description: "Caramel toffee frappelato (Topping optional, Whipped Cream Rs. 250 extra)",
+                price: "990",
+                image: "🥤"
+            },
+            {
+                name: "Blueberry Cheese Cake",
+                category: "beverages",
+                description: "Blueberry cheesecake frappelato (Topping optional, Whipped Cream Rs. 250 extra)",
+                price: "990",
+                image: "🥤"
+            },
+            {
+                name: "Bubble Gum",
+                category: "beverages",
+                description: "Bubble gum frappelato (Topping optional, Whipped Cream Rs. 250 extra)",
+                price: "990",
+                image: "🥤"
+            },
+            {
+                name: "Cappuccino Cuppa",
+                category: "beverages",
+                description: "Cappuccino frappelato (Topping optional, Whipped Cream Rs. 250 extra)",
+                price: "990",
+                image: "🥤"
+            },
+            {
+                name: "Cookies & Cream",
+                category: "beverages",
+                description: "Cookies and cream frappelato (Topping optional, Whipped Cream Rs. 250 extra)",
+                price: "990",
+                image: "🥤"
+            },
+            {
+                name: "Wood Apple Swirl",
+                category: "beverages",
+                description: "Wood apple frappelato (Topping optional, Whipped Cream Rs. 250 extra)",
+                price: "990",
+                image: "🥤"
+            },
+            
+            // Gelato
+            {
+                name: "Biscoff Blast Gelato",
+                category: "beverages",
+                description: "One scoop (OS) or One box (OB)",
+                price: "400 / 770",
+                image: "🍨"
+            },
+            {
+                name: "Mango Cashew Gelato",
+                category: "beverages",
+                description: "One scoop (OS) or One box (OB)",
+                price: "400 / 770",
+                image: "🍨"
+            },
+            {
+                name: "Mint Choco Chip Gelato",
+                category: "beverages",
+                description: "One scoop (OS) or One box (OB)",
+                price: "400 / 770",
+                image: "🍨"
+            },
+            {
+                name: "Wood Apple Swirl Gelato",
+                category: "beverages",
+                description: "One scoop (OS) or One box (OB)",
+                price: "400 / 770",
+                image: "🍨"
+            },
+            {
+                name: "Strawberry Pink Kiss Gelato",
+                category: "beverages",
+                description: "One scoop (OS) or One box (OB)",
+                price: "400 / 770",
+                image: "🍨"
+            },
+            {
+                name: "Chocolate Delight Gelato",
+                category: "beverages",
+                description: "One scoop (OS) or One box (OB)",
+                price: "400 / 770",
+                image: "🍨"
+            },
+            {
+                name: "Passion Fusion Gelato",
+                category: "beverages",
+                description: "One scoop (OS) or One box (OB)",
+                price: "400 / 770",
+                image: "🍨"
+            },
+            {
+                name: "Blueberry Cheesecake Gelato",
+                category: "beverages",
+                description: "One scoop (OS) or One box (OB)",
+                price: "400 / 770",
+                image: "🍨"
+            },
+            {
+                name: "Bubblegum Gelato",
+                category: "beverages",
+                description: "One scoop (OS) or One box (OB)",
+                price: "400 / 770",
+                image: "🍨"
+            },
+            {
+                name: "Cappuccino Cuppa' Gelato",
+                category: "beverages",
+                description: "One scoop (OS) or One box (OB)",
+                price: "400 / 770",
+                image: "🍨"
+            },
+            {
+                name: "French Vanilla Gelato",
+                category: "beverages",
+                description: "One scoop (OS) or One box (OB)",
+                price: "400 / 770",
+                image: "🍨"
+            },
+            {
+                name: "Caramel Toffee Crunch Gelato",
+                category: "beverages",
+                description: "One scoop (OS) or One box (OB)",
+                price: "400 / 770",
+                image: "🍨"
+            },
+            {
+                name: "Cookies & Cream Gelato",
+                category: "beverages",
+                description: "One scoop (OS) or One box (OB)",
+                price: "400 / 770",
+                image: "🍨"
+            },
+            
+            // Hot Beverages
+            {
+                name: "Americano Regular",
+                category: "beverages",
+                description: "Regular size (Add-ons Vanilla & Caramel Rs. 120 extra)",
+                price: "390",
+                image: "☕"
+            },
+            {
+                name: "Americano Large",
+                category: "beverages",
+                description: "Large size (Add-ons Vanilla & Caramel Rs. 120 extra)",
+                price: "530",
+                image: "☕"
+            },
+            {
+                name: "Flat White Regular",
+                category: "beverages",
+                description: "Regular size (Add-ons Vanilla & Caramel Rs. 120 extra)",
+                price: "570",
+                image: "☕"
+            },
+            {
+                name: "Flat White Large",
+                category: "beverages",
+                description: "Large size (Add-ons Vanilla & Caramel Rs. 120 extra)",
+                price: "610",
+                image: "☕"
+            },
+            {
+                name: "Caffe Mocha Regular",
+                category: "beverages",
+                description: "Regular size (Add-ons Vanilla & Caramel Rs. 120 extra)",
+                price: "520",
+                image: "☕"
+            },
+            {
+                name: "Caffe Mocha Large",
+                category: "beverages",
+                description: "Large size (Add-ons Vanilla & Caramel Rs. 120 extra)",
+                price: "670",
+                image: "☕"
+            },
+            {
+                name: "Cafe Latte Regular",
+                category: "beverages",
+                description: "Regular size (Add-ons Vanilla & Caramel Rs. 120 extra)",
+                price: "480",
+                image: "☕"
+            },
+            {
+                name: "Cafe Latte Large",
+                category: "beverages",
+                description: "Large size (Add-ons Vanilla & Caramel Rs. 120 extra)",
+                price: "630",
+                image: "☕"
+            },
+            {
+                name: "Espresso Single Shot",
+                category: "beverages",
+                description: "Single shot espresso",
+                price: "380",
+                image: "☕"
+            },
+            {
+                name: "Espresso Double Shot",
+                category: "beverages",
+                description: "Double shot espresso",
+                price: "420",
+                image: "☕"
+            },
+            {
+                name: "Hot Chocolate",
+                category: "beverages",
+                description: "Rich hot chocolate",
+                price: "790",
+                image: "☕"
+            },
+            
+            // Cold Beverages
+            {
+                name: "Ice Latte Regular",
+                category: "beverages",
+                description: "Regular iced latte",
+                price: "590",
+                image: "🥤"
+            },
+            {
+                name: "Ice Latte Large",
+                category: "beverages",
+                description: "Large iced latte",
+                price: "790",
+                image: "🥤"
+            }
+        ];
+
+        // DOM Elements
+        const menuGrid = document.getElementById('menuGrid');
+        const searchInput = document.getElementById('searchInput');
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const noResults = document.getElementById('noResults');
+
+        let currentCategory = 'all';
+        let currentSearch = '';
+
+        // Render Menu Items
+        function renderMenu() {
+            const filteredItems = menuItems.filter(item => {
+                const matchesCategory = currentCategory === 'all' || item.category === currentCategory;
+                const matchesSearch = item.name.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                                     item.description.toLowerCase().includes(currentSearch.toLowerCase());
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filteredItems.length === 0) {
+                menuGrid.classList.add('hidden');
+                noResults.classList.remove('hidden');
+                return;
+            }
+
+            menuGrid.classList.remove('hidden');
+            noResults.classList.add('hidden');
+
+            menuGrid.innerHTML = filteredItems.map(item => `
+                <div class="menu-item-card bg-white rounded-2xl shadow-lg overflow-hidden fade-in">
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="text-xl font-bold text-gray-800">${item.name}</h3>
+                            <div class="text-2xl font-bold text-orange-500 ml-4 flex-shrink-0">Rs. ${item.price}</div>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed">${item.description}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Category Filter
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentCategory = btn.dataset.category;
+                renderMenu();
+            });
+        });
+
+        // Search Functionality
+        searchInput.addEventListener('input', (e) => {
+            currentSearch = e.target.value;
+            renderMenu();
+        });
+
+        // Initial Render
+        renderMenu();
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+{
+  "status": "success",
+  "data": {
+    "featured_items": [
+      {
+        "id": 1,
+        "name": "Big Burley Beef Burger",
+        "description": "Juicy beef patty, fresh lettuce",
+        "price": "2,490.00",
+        "image": "images/burger.webp",
+        "category": "burgers",
+        "featured": true
+      },
+      {
+        "id": 2,
+        "name": "Hot Beef Spaghetti",
+        "description": "Classic Italian pasta with rich tomato sauce",
+        "price": "1,290.00",
+        "image": "images/Spaghetti.webp",
+        "category": "pasta",
+        "featured": true
+      },
+      {
+        "id": 3,
+        "name": "Devilled Chicken Submarine",
+        "description": "BurgerSauce, Ice Burg Lettuce, Devilled Chicken Mix",
+        "price": "1,490.00",
+        "image": "images/Submarine.webp",
+        "category": "submarines",
+        "featured": true
+      },
+      {
+        "id": 4,
+        "name": "Crispy Prawn Burdilla",
+        "description": "Burdilla Bread, Basic Mayo, Tomato Ketchup",
+        "price": "1,490.00",
+        "image": "images/Burdilla.webp",
+        "category": "burdilla",
+        "featured": true
+      },
+      {
+        "id": 5,
+        "name": "Lush Tropics",
+        "description": "Kiwi Purée, Poach Purée, Lime Slices Mint syrup & 7Up",
+        "price": "890.00",
+        "image": "images/chillerz.webp",
+        "category": "beverages",
+        "featured": true
+      },
+      {
+        "id": 6,
+        "name": "Biscoff Blast",
+        "description": "",
+        "price": "400.00",
+        "image": "images/Biscoff Blast.webp",
+        "category": "beverages",
+        "featured": true
+      },
+      {
+        "id": 7,
+        "name": "Chocolate Delight Frappe",
+        "description": "Chilled coffee blended with ice and milk",
+        "price": "990.00",
+        "image": "images/Frappes.webp",
+        "category": "beverages",
+        "featured": true
+      },
+      {
+        "id": 8,
+        "name": "Cappuccino",
+        "description": "Espresso, steamed milk, and a layer of frothy foam",
+        "price": "590.00",
+        "image": "images/cappuccino.webp",
+        "category": "beverages",
+        "featured": true
+      }
+    ]
+  }
+}
+
