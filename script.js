@@ -201,217 +201,88 @@ function initNavigation() {
 
 document.addEventListener('DOMContentLoaded', initNavigation);
 
-// 5. Dynamic Google Reviews Carousel
-let reviews = [];
+// 5. Dynamic Reviews Carousel
+const reviews = [
+  {
+    text: "Hands down the best burgers in Sri Lanka – juicy and packed with flavour!",
+    name: "Kasun",
+    stars: 5
+  },
+  {
+    text: "Like Five Guys, but with a Sri Lankan twist. Absolutely worth it!",
+    name: "Dilshan",
+    stars: 5
+  },
+  {
+    text: "Didn't expect such top-quality burgers here. Totally impressed!",
+    name: "Ruwan",
+    stars: 4
+  },
+  {
+    text: "Fresh ingredients, amazing taste, and a proper local vibe.",
+    name: "Shalini",
+    stars: 5
+  },
+  {
+    text: "Crispy fries, juicy patties, and the sauces are next level. Coming back for sure!",
+    name: "Nadeesha",
+    stars: 5
+  },
+  {
+    text: "Great value for money and the friendliest staff in Burleys.",
+    name: "Tharindu",
+    stars: 4
+  }
+];
+
 let reviewIndex = 0;
 const reviewSlide = document.getElementById('reviewSlide');
 const reviewPrev = document.getElementById('reviewPrev');
 const reviewNext = document.getElementById('reviewNext');
 let reviewInterval = null;
-let googleReviewsAPI = null;
 
-// Initialize Google Reviews API
-async function initializeGoogleReviews() {
-  try {
-    // Check if Google Reviews config is available
-    if (typeof GOOGLE_REVIEWS_CONFIG === 'undefined' || typeof GoogleReviewsAPI === 'undefined') {
-      console.warn('⚠️ Google Reviews API not configured. Using fallback reviews.');
-      
-      // Use fallback reviews
-      reviews = [
-        {
-          text: "Hands down the best burgers in Sri Lanka – juicy and packed with flavour!",
-          name: "Kasun",
-          stars: 5,
-          verified: false
-        },
-        {
-          text: "Like Five Guys, but with a Sri Lankan twist. Absolutely worth it!",
-          name: "Dilshan",
-          stars: 5,
-          verified: false
-        },
-        {
-          text: "Didn't expect such top-quality burgers here. Totally impressed!",
-          name: "Ruwan",
-          stars: 4,
-          verified: false
-        },
-        {
-          text: "Fresh ingredients, amazing taste, and a proper local vibe.",
-          name: "Shalini",
-          stars: 5,
-          verified: false
-        },
-        {
-          text: "Crispy fries, juicy patties, and the sauces are next level. Coming back for sure!",
-          name: "Nadeesha",
-          stars: 5,
-          verified: false
-        },
-        {
-          text: "Great value for money and the friendliest staff in Burleys.",
-          name: "Tharindu",
-          stars: 4,
-          verified: false
-        }
-      ];
-      
-      if (reviewSlide) {
-        renderReview(reviewIndex);
-        startReviewAutoSlide();
-      }
-      return;
-    }
-
-    // Initialize Google Reviews API
-    googleReviewsAPI = new GoogleReviewsAPI(GOOGLE_REVIEWS_CONFIG);
-    
-    // Show loading state
-    if (reviewSlide) {
-      reviewSlide.innerHTML = `
-        <div class="review-loading">
-          <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: #fa9f1b;"></i>
-          <p style="margin-top: 1rem; color: #666;">Loading reviews from Google...</p>
-        </div>
-      `;
-    }
-
-    // Fetch Google reviews
-    reviews = await googleReviewsAPI.getFormattedReviews();
-    
-    console.log(`✅ Loaded ${reviews.length} Google reviews`);
-
-    // Start carousel
-    if (reviewSlide && reviews.length > 0) {
-      renderReview(reviewIndex);
-      startReviewAutoSlide();
-    }
-
-  } catch (error) {
-    console.error('❌ Error initializing Google reviews:', error);
-    
-    // Use fallback reviews on error
-    reviews = GOOGLE_REVIEWS_CONFIG?.fallbackReviews || [
-      {
-        text: "Hands down the best burgers in Sri Lanka – juicy and packed with flavour!",
-        name: "Kasun",
-        stars: 5,
-        verified: false
-      }
-    ];
-    
-    if (reviewSlide) {
-      renderReview(reviewIndex);
-      startReviewAutoSlide();
-    }
-  }
-}
-
-// Render a single review
 function renderReview(idx) {
-  if (!reviewSlide || !reviews || reviews.length === 0) return;
-  
+  if (!reviewSlide) return;
   const review = reviews[idx];
   const stars = '★'.repeat(review.stars) + '☆'.repeat(5 - review.stars);
-  
-  // Build profile photo HTML
-  const profilePhotoHTML = review.profilePhoto 
-    ? `<img src="${review.profilePhoto}" alt="${review.name}" class="review-profile-photo" onerror="this.style.display='none'" />`
-    : '';
-  
-  // Build verified badge HTML
-  const verifiedBadgeHTML = review.verified 
-    ? `<span class="review-verified-badge" title="Verified Google Review">
-         <i class="fab fa-google"></i> Verified
-       </span>`
-    : '';
-  
-  // Format time if available
-  const timeHTML = review.time 
-    ? `<span class="review-time">${formatReviewTime(review.time)}</span>`
-    : '';
-  
   reviewSlide.innerHTML = `
     <div class="review-stars">${stars}</div>
     <div class="review-text">"${review.text}"</div>
-    <div class="review-author">
-      ${profilePhotoHTML}
-      <div class="review-author-info">
-        <span class="review-name">- ${review.name}</span>
-        ${verifiedBadgeHTML}
-        ${timeHTML}
-      </div>
-    </div>
+    <span class="review-name">- ${review.name}</span>
   `;
-  
-  // Fade in animation
   reviewSlide.style.opacity = 0;
   setTimeout(() => { reviewSlide.style.opacity = 1; }, 50);
 }
 
-// Format review time (relative time)
-function formatReviewTime(timestamp) {
-  const now = Math.floor(Date.now() / 1000);
-  const diff = now - timestamp;
-  
-  const minute = 60;
-  const hour = minute * 60;
-  const day = hour * 24;
-  const week = day * 7;
-  const month = day * 30;
-  const year = day * 365;
-  
-  if (diff < minute) return 'Just now';
-  if (diff < hour) return `${Math.floor(diff / minute)} minutes ago`;
-  if (diff < day) return `${Math.floor(diff / hour)} hours ago`;
-  if (diff < week) return `${Math.floor(diff / day)} days ago`;
-  if (diff < month) return `${Math.floor(diff / week)} weeks ago`;
-  if (diff < year) return `${Math.floor(diff / month)} months ago`;
-  return `${Math.floor(diff / year)} years ago`;
-}
-
-// Auto-slide reviews
 function startReviewAutoSlide() {
   if (reviewInterval) clearInterval(reviewInterval);
-  if (!reviews || reviews.length === 0) return;
-  
   reviewInterval = setInterval(() => {
     reviewIndex = (reviewIndex + 1) % reviews.length;
     renderReview(reviewIndex);
-  }, 5000); // Changed to 5 seconds for longer read time
+  }, 3000);
 }
 
-// Stop auto-slide
 function stopReviewAutoSlide() {
   if (reviewInterval) clearInterval(reviewInterval);
 }
 
-// Navigation button handlers
-if (reviewPrev) {
-  reviewPrev.addEventListener('click', () => {
-    stopReviewAutoSlide();
-    reviewIndex = (reviewIndex - 1 + reviews.length) % reviews.length;
-    renderReview(reviewIndex);
-    startReviewAutoSlide();
-  });
-}
-
-if (reviewNext) {
-  reviewNext.addEventListener('click', () => {
-    stopReviewAutoSlide();
-    reviewIndex = (reviewIndex + 1) % reviews.length;
-    renderReview(reviewIndex);
-    startReviewAutoSlide();
-  });
-}
-
-// Initialize reviews when DOM is ready
 if (reviewSlide) {
-  document.addEventListener('DOMContentLoaded', () => {
-    initializeGoogleReviews();
-  });
+  renderReview(reviewIndex);
+  startReviewAutoSlide();
 }
+
+if (reviewPrev) reviewPrev.addEventListener('click', () => {
+  reviewIndex = (reviewIndex - 1 + reviews.length) % reviews.length;
+  renderReview(reviewIndex);
+  stopReviewAutoSlide();
+  startReviewAutoSlide();
+});
+if (reviewNext) reviewNext.addEventListener('click', () => {
+  reviewIndex = (reviewIndex + 1) % reviews.length;
+  renderReview(reviewIndex);
+  stopReviewAutoSlide();
+  startReviewAutoSlide();
+});
 
 // Loading Screen and Modal Logic
 document.addEventListener('DOMContentLoaded', function() {
