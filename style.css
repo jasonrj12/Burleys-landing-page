@@ -701,6 +701,7 @@ footer {
   letter-spacing: 0.5px;
   border-radius: 30px;
   text-align: center;
+  text-decoration: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
