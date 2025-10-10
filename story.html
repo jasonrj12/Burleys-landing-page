@@ -34,6 +34,8 @@
       height: 4px;
       background: rgba(0, 0, 0, 0.1);
       z-index: 9999;
+      margin: 0;
+      padding: 0;
     }
 
     .scroll-progress-bar {
@@ -70,12 +72,29 @@
       box-sizing: border-box;
     }
 
+    html {
+      overflow-x: hidden;
+      width: 100%;
+    }
+
     body {
       font-family: 'Roboto', Arial, sans-serif;
       line-height: 1.6;
       color: var(--text-primary);
       background: #fafafa;
       overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+    }
+
+    .site-header {
+      margin: 0 !important;
+      padding: 0 !important;
+      display: block;
+    }
+
+    .navbar {
+      margin-bottom: 0 !important;
     }
 
     /* Hero Section */
@@ -86,6 +105,11 @@
       position: relative;
       background: var(--gradient);
       overflow: hidden;
+      width: 100%;
+      max-width: 100vw;
+      margin: 0 !important;
+      margin-top: -1px !important;
+      padding-top: 2rem;
     }
 
     .hero::before {
@@ -116,11 +140,17 @@
       align-items: center;
     }
 
+    .hero-text {
+      margin: 0;
+      padding: 0;
+    }
+
     .hero-text h1 {
       font-family: 'Montserrat', Arial, sans-serif;
       font-size: clamp(3rem, 6vw, 5rem);
       font-weight: 900;
       line-height: 1.1;
+      margin-top: 0;
       margin-bottom: 1.5rem;
       color: white;
       letter-spacing: -0.02em;
@@ -214,12 +244,16 @@
     .story-section {
       padding: 6rem 0;
       position: relative;
+      width: 100%;
+      overflow-x: hidden;
     }
 
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .story-grid {
@@ -363,13 +397,16 @@
     .values-section {
       padding: 6rem 0;
       background: var(--gradient-subtle);
+      width: 100%;
+      overflow-x: hidden;
     }
 
     .values-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
       margin-top: 3rem;
+      width: 100%;
     }
 
     .value-card {
@@ -734,15 +771,43 @@
 
     /* Responsive Design */
     @media (max-width: 768px) {
+      .container {
+        padding: 0 1rem;
+        max-width: 100%;
+      }
+
+      .hero {
+        overflow-x: hidden;
+        padding-top: 1rem;
+        min-height: auto;
+        padding-bottom: 3rem;
+        align-items: flex-start;
+      }
 
       .hero-content {
         grid-template-columns: 1fr;
         gap: 2rem;
         text-align: center;
+        padding: 0 1rem;
+        margin-top: 0;
+      }
+
+      .hero-text {
+        margin-top: 0;
+      }
+
+      .hero-text h1 {
+        margin-top: 0;
       }
 
       .hero-stats {
         justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .story-section {
+        padding: 3rem 0;
+        overflow-x: hidden;
       }
 
       .story-grid {
@@ -752,6 +817,11 @@
 
       .story-card {
         position: static;
+        padding: 1.5rem;
+      }
+
+      .values-section {
+        overflow-x: hidden;
       }
 
       .values-grid {
@@ -820,6 +890,45 @@
         gap: 1.5rem;
       }
     }
+
+    /* Extra small devices */
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 0.75rem;
+      }
+
+      .hero {
+        padding-top: 0.5rem;
+        padding-bottom: 2rem;
+      }
+
+      .hero-content {
+        padding: 0 0.75rem;
+        gap: 1.5rem;
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .story-highlights {
+        gap: 0.75rem;
+      }
+
+      .highlight {
+        padding: 0.75rem;
+      }
+
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+
+      .hero-text p {
+        font-size: 1rem;
+      }
+    }
+
     footer {
             background: #fa9f1b;
             color: #3f1e27;
@@ -1102,9 +1211,6 @@
 
   <script src="script.js" defer></script>
   <script>
-    // Update year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
     // Mobile menu toggle
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('primaryNav');
@@ -1122,37 +1228,6 @@
         }
       });
     }
-
-     document.addEventListener('DOMContentLoaded', function() {
-      // Your existing code
-      // Close modal functionality
-      function closeModal() {
-        modalOverlay.classList.remove('active');
-        // Stop image carousel when modal closes
-        stopImageCarousel();
-      }
-
-      modalClose.addEventListener('click', closeModal);
-
-      // Close modal when clicking outside
-      modalOverlay.addEventListener('click', function(e) {
-        if (e.target === modalOverlay) {
-          closeModal();
-        }
-      });
-
-      // Close modal and scroll to menu
-      browseMenu.addEventListener('click', function(e) {
-        e.preventDefault();
-        closeModal();
-        setTimeout(() => {
-          document.getElementById('featured-menu').scrollIntoView({
-            behavior: 'smooth'
-          });
-        }, 300);
-      });
-    });
-    
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1198,17 +1273,6 @@
       observer.observe(el);
     });
 
-    document.addEventListener('DOMContentLoaded', function() {
-  window.onscroll = function() {
-    // Your existing scroll logic here
-    // Ensure the element you are trying to access is available
-    const myElement = document.getElementById('story'); // Replace 'yourElementId' with the actual ID
-    if (myElement) {
-      // Access the style property only if myElement is not null
-      myElement.style.display = 'block';
-    }
-  };
-});
   </script>
 
 </body>
