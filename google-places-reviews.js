@@ -45,7 +45,7 @@ async function fetchGoogleReviews() {
 function processReviews(place) {
   const reviews = place.reviews || [];
   
-  console.log(`📊 Google returned ${reviews.length} total reviews`);
+ 
   
   if (reviews.length === 0) {
     return [];
@@ -94,7 +94,6 @@ function processReviews(place) {
       };
     });
   
-  console.log(`✅ Loaded ${processed.length} reviews (truncated to 350 chars)`);
   return processed;
 }
 
