@@ -202,87 +202,115 @@ function initNavigation() {
 document.addEventListener('DOMContentLoaded', initNavigation);
 
 // 5. Dynamic Reviews Carousel
-const reviews = [
+// Reviews are now loaded automatically from Google Places API
+// See google-places-reviews.js for configuration
+// Fallback reviews in case API fails
+window.reviews = [
   {
-    text: "Hands down the best burgers in Sri Lanka – juicy and packed with flavour!",
-    name: "Kasun",
-    stars: 5
-  },
-  {
-    text: "Like Five Guys, but with a Sri Lankan twist. Absolutely worth it!",
-    name: "Dilshan",
-    stars: 5
-  },
-  {
-    text: "Didn't expect such top-quality burgers here. Totally impressed!",
-    name: "Ruwan",
-    stars: 4
-  },
-  {
-    text: "Fresh ingredients, amazing taste, and a proper local vibe.",
-    name: "Shalini",
-    stars: 5
-  },
-  {
-    text: "Crispy fries, juicy patties, and the sauces are next level. Coming back for sure!",
-    name: "Nadeesha",
-    stars: 5
-  },
-  {
-    text: "Great value for money and the friendliest staff in Burleys.",
-    name: "Tharindu",
-    stars: 4
+    text: "Amazing burgers and great service!",
+    name: "Customer",
+    stars: 5,
+    date: "Recently",
+    platform: "Google"
   }
 ];
 
-let reviewIndex = 0;
-const reviewSlide = document.getElementById('reviewSlide');
-const reviewPrev = document.getElementById('reviewPrev');
-const reviewNext = document.getElementById('reviewNext');
+window.reviewIndex = 0;
+let reviewSlide = null;
+let reviewPrev = null;
+let reviewNext = null;
 let reviewInterval = null;
 
-function renderReview(idx) {
+window.renderReview = function(idx) {
   if (!reviewSlide) return;
-  const review = reviews[idx];
+  const review = window.reviews[idx];
+  if (!review) return;
+  
   const stars = '★'.repeat(review.stars) + '☆'.repeat(5 - review.stars);
+  const dateInfo = review.date ? `<span class="review-date">${review.date}</span>` : '';
+  const platformBadge = review.platform ? `<span class="review-platform"><i class="fa-brands fa-google"></i> ${review.platform} Review</span>` : '';
+  const reviewerName = review.name || 'Anonymous';
+  
   reviewSlide.innerHTML = `
-    <div class="review-stars">${stars}</div>
+    <div class="review-header">
+      <div class="review-stars">${stars}</div>
+      ${platformBadge}
+    </div>
     <div class="review-text">"${review.text}"</div>
-    <span class="review-name">- ${review.name}</span>
+    <div class="review-footer">
+      <span class="review-name">— ${reviewerName}</span>
+      ${dateInfo}
+    </div>
   `;
   reviewSlide.style.opacity = 0;
   setTimeout(() => { reviewSlide.style.opacity = 1; }, 50);
 }
 
-function startReviewAutoSlide() {
+window.startReviewAutoSlide = function() {
   if (reviewInterval) clearInterval(reviewInterval);
-  reviewInterval = setInterval(() => {
-    reviewIndex = (reviewIndex + 1) % reviews.length;
-    renderReview(reviewIndex);
-  }, 3000);
+  
+  // Only start auto-slide if there are multiple reviews
+  if (window.reviews && window.reviews.length > 1) {
+    reviewInterval = setInterval(() => {
+      window.reviewIndex = (window.reviewIndex + 1) % window.reviews.length;
+      window.renderReview(window.reviewIndex);
+    }, 3000);
+  }
 }
 
-function stopReviewAutoSlide() {
+window.stopReviewAutoSlide = function() {
   if (reviewInterval) clearInterval(reviewInterval);
 }
 
-if (reviewSlide) {
-  renderReview(reviewIndex);
-  startReviewAutoSlide();
+// Debug function to manually test carousel
+window.testCarousel = function() {
+  console.log('=== CAROUSEL TEST ===');
+  console.log('Reviews count:', window.reviews?.length);
+  console.log('Current index:', window.reviewIndex);
+  console.log('Reviews:', window.reviews);
+  
+  if (window.reviews && window.reviews.length > 1) {
+    console.log('Testing manual rotation...');
+    window.reviewIndex = (window.reviewIndex + 1) % window.reviews.length;
+    window.renderReview(window.reviewIndex);
+    console.log('Now showing review:', window.reviewIndex + 1);
+  } else {
+    console.log('❌ Cannot test: Need multiple reviews');
+  }
 }
 
-if (reviewPrev) reviewPrev.addEventListener('click', () => {
-  reviewIndex = (reviewIndex - 1 + reviews.length) % reviews.length;
-  renderReview(reviewIndex);
-  stopReviewAutoSlide();
-  startReviewAutoSlide();
-});
-if (reviewNext) reviewNext.addEventListener('click', () => {
-  reviewIndex = (reviewIndex + 1) % reviews.length;
-  renderReview(reviewIndex);
-  stopReviewAutoSlide();
-  startReviewAutoSlide();
-});
+// Initialize reviews when DOM is ready
+function initReviews() {
+  reviewSlide = document.getElementById('reviewSlide');
+  reviewPrev = document.getElementById('reviewPrev');
+  reviewNext = document.getElementById('reviewNext');
+  
+  if (reviewSlide) {
+    window.renderReview(window.reviewIndex);
+    window.startReviewAutoSlide();
+  }
+
+  if (reviewPrev) reviewPrev.addEventListener('click', () => {
+    window.reviewIndex = (window.reviewIndex - 1 + window.reviews.length) % window.reviews.length;
+    window.renderReview(window.reviewIndex);
+    window.stopReviewAutoSlide();
+    window.startReviewAutoSlide();
+  });
+  
+  if (reviewNext) reviewNext.addEventListener('click', () => {
+    window.reviewIndex = (window.reviewIndex + 1) % window.reviews.length;
+    window.renderReview(window.reviewIndex);
+    window.stopReviewAutoSlide();
+    window.startReviewAutoSlide();
+  });
+}
+
+// Initialize on DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initReviews);
+} else {
+  initReviews();
+}
 
 // Loading Screen and Modal Logic
 document.addEventListener('DOMContentLoaded', function() {

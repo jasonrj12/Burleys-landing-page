@@ -1316,22 +1316,61 @@ footer {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
 .review-text {
   font-size: 1.25rem;
   font-family: 'Roboto', Arial, sans-serif;
   margin-bottom: 1rem;
+  line-height: 1.6;
+}
+.review-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 .review-name {
   font-weight: 700;
   font-family: 'Montserrat', 'Arial';
-  margin-bottom: 0.5rem;
-  display: block;
-}
-.review-stars {
   color: #2D2926;
   font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+  display: inline-block;
+  margin-right: 1rem;
+}
+.review-date {
+  font-size: 0.85rem;
+  color: #666;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-style: italic;
+}
+.review-stars {
+  color: #fa9f1b;
+  font-size: 1.2rem;
   letter-spacing: 2px;
+}
+.review-platform {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #4285f4;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: 'Montserrat', 'Arial';
+  letter-spacing: 0.5px;
+}
+.review-platform i {
+  font-size: 0.9rem;
 }
 @media (max-width: 600px) {
   .reviews {
@@ -1369,6 +1408,29 @@ footer {
   .review-arrow:active {
     transform: scale(0.95) !important;
     box-shadow: 0 2px 8px rgba(45, 41, 38, 0.5) !important;
+  }
+  .review-text {
+    font-size: 1rem !important;
+  }
+  .review-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.3rem !important;
+  }
+  .review-footer {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.3rem !important;
+  }
+  .review-platform {
+    font-size: 0.7rem !important;
+    padding: 0.25rem 0.6rem !important;
+  }
+  .review-date {
+    font-size: 0.75rem !important;
+  }
+  .review-stars {
+    font-size: 1rem !important;
   }
 } 
 
@@ -1583,7 +1645,7 @@ body, button, a, h1, h2, h3, .logo, .footer-logo, .footer-copy, .footer-links, .
 }
 
 /* 2. Revert for descriptions and review text */
-.description, .review-text {
+.description, .review-text, .review-date {
   text-transform: none !important;
 }
 
