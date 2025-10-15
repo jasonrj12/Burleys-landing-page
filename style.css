@@ -170,7 +170,7 @@ p {
   position: relative;
   z-index: 10;
 }
-.hero-content h1 {
+.hero-content h1, .hero-content .hero-title {
   font-size: clamp(2rem, 6vw, 3.5rem); /* Improved responsive scaling */
   margin-bottom: 1.5rem; /* Better spacing */
   line-height: 1.2; /* Tighter for hero titles */
@@ -192,12 +192,27 @@ p {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.hero-content p {
+.hero-content p, .hero-content .hero-tagline, .hero-content .hero-subtitle {
   font-size: clamp(1.1rem, 2.5vw, 1.35rem); /* Responsive sizing */
   line-height: 1.6; /* Better readability */
   margin-bottom: 2rem;
   color: #2D2926;
   font-weight: 400; /* Consistent body weight */
+}
+/* Tagline accent styling */
+.hero-content .hero-tagline {
+  color: #e8890a;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.15); /* improve contrast on light backgrounds */
+}
+/* Subtitle width and readability tweaks */
+.hero-content .hero-subtitle {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #1a1a1a; /* slightly darker for readability */
 }
 .hero-content .cta-btn {
   display: inline-block;
