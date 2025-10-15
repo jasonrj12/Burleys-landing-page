@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://burleys.netlify.app/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Allow all search engines to index all content
+Disallow:
+
+# Block access to admin or private areas (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow access to CSS and JS files
+Allow: /style.css
+Allow: /navstyle.css
+Allow: /script.js
+Allow: /images/
+Allow: /*.css
+Allow: /*.js
+Allow: /*.webp
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.svg

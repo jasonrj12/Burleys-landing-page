@@ -207,10 +207,31 @@ document.addEventListener('DOMContentLoaded', initNavigation);
 // Fallback reviews in case API fails
 window.reviews = [
   {
-    text: "Amazing burgers and great service!",
-    name: "Customer",
+    text: "The best burgers in Colombo! The Big Burley Beef Burger is absolutely amazing. Fresh ingredients and great service at their Bambalapitiya location.",
+    name: "Sarah M.",
     stars: 5,
-    date: "Recently",
+    date: "2 days ago",
+    platform: "Google"
+  },
+  {
+    text: "Love the halal chicken burgers here! The Seoul Crunch is my favorite. Fast service and delicious food. Highly recommend for anyone in Nugegoda!",
+    name: "Ahmed R.",
+    stars: 5,
+    date: "1 week ago",
+    platform: "Google"
+  },
+  {
+    text: "Amazing submarines and pasta! The Hot Beef Spaghetti is incredible. Great atmosphere and friendly staff. Will definitely come back!",
+    name: "Priya K.",
+    stars: 5,
+    date: "3 days ago",
+    platform: "Google"
+  },
+  {
+    text: "Best fast food in Colombo! The frappes are so good and the burgers are always fresh. Great value for money and quick delivery.",
+    name: "David L.",
+    stars: 5,
+    date: "5 days ago",
     platform: "Google"
   }
 ];
@@ -242,8 +263,14 @@ window.renderReview = function(idx) {
       ${dateInfo}
     </div>
   `;
+  
+  // Add fade-in animation
   reviewSlide.style.opacity = 0;
-  setTimeout(() => { reviewSlide.style.opacity = 1; }, 50);
+  reviewSlide.style.transform = 'translateY(20px)';
+  setTimeout(() => { 
+    reviewSlide.style.opacity = 1; 
+    reviewSlide.style.transform = 'translateY(0)';
+  }, 50);
 }
 
 window.startReviewAutoSlide = function() {

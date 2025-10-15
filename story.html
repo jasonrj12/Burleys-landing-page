@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Our Story - Burley's</title>
-  <meta name="description" content="Discover Burley's Sri Lanka story: how we bring bold Sri Lankan flavours to modern fried chicken." />
+  <title>Burley's Story - Best Burgers in Colombo | From Fashion to Flavor</title>
+  <meta name="description" content="🍔 Discover Burley's story - How we became the best burgers in Colombo! From fashion to flavor, serving halal fast food in Bambalapitiya & Nugegoda since 2020." />
+  <meta name="keywords" content="burley's story, best burgers colombo history, halal food colombo, bambalapitiya restaurant story, nugegoda restaurant, sri lankan fast food, burley's founders" />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Burley's" />
   
@@ -25,6 +26,306 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
   
   <style>
+    /* Footer Styles */
+    .minimalist-footer {
+      background: #ffffff;
+      position: relative;
+      padding: 0;
+      margin-top: 2rem;
+    }
+
+    .footer-wave {
+      position: absolute;
+      top: -1px;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .footer-wave svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 60px;
+    }
+
+    .footer-wrap {
+      background: linear-gradient(135deg, #2D2926 0%, #1a1614 100%);
+      padding: 2rem 2rem 1.5rem 2rem;
+      text-align: center;
+    }
+
+    .footer-brand-section {
+      margin-bottom: 2rem;
+    }
+
+    .footer-brand-logo {
+      width: 110px;
+      height: auto;
+      margin: 0 auto 0.8rem;
+      display: block;
+    }
+
+    .footer-slogan {
+      color: #fa9f1b;
+      font-size: clamp(0.95rem, 2vw, 1.05rem);
+      font-weight: 500;
+      line-height: 1.5;
+      margin: 0.8rem 0 1rem 0;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-social-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .social-icon-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      background: transparent;
+      border: 2px solid #fa9f1b;
+      color: #fa9f1b;
+      text-decoration: none;
+    }
+
+    .social-icon-btn:hover {
+      background: #fa9f1b;
+      color: #2D2926;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(250, 159, 27, 0.4);
+    }
+
+    .social-icon-btn.facebook,
+    .social-icon-btn.instagram,
+    .social-icon-btn.tiktok {
+      border-color: #ffffff;
+      color: #ffffff;
+    }
+
+    .social-icon-btn.facebook:hover,
+    .social-icon-btn.instagram:hover,
+    .social-icon-btn.tiktok:hover {
+      background: #ffffff;
+      color: #2D2926;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .footer-cards {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin: 2rem 0 1.5rem 0;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .info-card {
+      background: rgba(250, 159, 27, 0.08);
+      border: 1px solid rgba(250, 159, 27, 0.2);
+      border-radius: 12px;
+      padding: 1.2rem 1rem;
+      min-width: 200px;
+      flex: 1;
+      max-width: 250px;
+      transition: all 0.3s ease;
+    }
+
+    .info-card:hover {
+      background: rgba(250, 159, 27, 0.15);
+      border-color: #fa9f1b;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(250, 159, 27, 0.2);
+    }
+
+    .card-icon {
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(135deg, #fa9f1b, #e8890a);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.8rem;
+      color: #2D2926;
+      font-size: 1.2rem;
+    }
+
+    .info-card h4 {
+      color: #fa9f1b;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.875rem, 1.8vw, 0.95rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .info-card p {
+      color: #cccccc;
+      font-size: clamp(0.8rem, 1.6vw, 0.875rem);
+      line-height: 1.6;
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .info-card a {
+      color: #cccccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .info-card a:hover {
+      color: #fa9f1b;
+    }
+
+    .footer-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin: 1.5rem 0;
+      padding: 1rem 0;
+      border-top: 1px solid rgba(250, 159, 27, 0.2);
+      border-bottom: 1px solid rgba(250, 159, 27, 0.2);
+    }
+
+    .footer-menu a {
+      color: #cccccc;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: clamp(0.8rem, 1.6vw, 0.875rem);
+      line-height: 1.4;
+      letter-spacing: 0.25px;
+      transition: all 0.3s ease;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+    }
+
+    .footer-menu a:hover {
+      color: #fa9f1b;
+      background: rgba(250, 159, 27, 0.1);
+    }
+
+    .footer-menu .separator {
+      color: #fa9f1b;
+      font-size: 1rem;
+    }
+
+    .footer-credits {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      color: #999999;
+      font-size: clamp(0.8rem, 1.6vw, 0.875rem);
+      line-height: 1.6;
+    }
+
+    .footer-credits p {
+      margin: 0.5rem 0;
+      color: #ffffff;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    .footer-credits a {
+      color: #fa9f1b;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .footer-credits a:hover {
+      color: #ffb347;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .footer-wave svg {
+        height: 40px;
+      }
+
+      .footer-wrap {
+        padding: 1.5rem 1.5rem 1rem 1.5rem;
+      }
+
+      .footer-brand-section {
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-cards {
+        flex-direction: column;
+        gap: 1rem;
+        margin: 1.5rem 0 1rem 0;
+      }
+
+      .info-card {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 1rem 0.8rem;
+      }
+
+      .footer-menu {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin: 1rem 0;
+        padding: 0.8rem 0;
+      }
+
+      .footer-menu .separator {
+        display: none;
+      }
+
+      .social-icon-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-brand-logo {
+        width: 100px;
+      }
+
+      .footer-slogan {
+        font-size: 0.9rem;
+      }
+
+      .info-card {
+        padding: 1rem 0.8rem;
+      }
+
+      .card-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+      }
+
+      .info-card h4 {
+        font-size: 0.9rem;
+      }
+
+      .info-card p {
+        font-size: 0.8rem;
+      }
+    }
+  
     /* Scroll Progress Bar */
     .scroll-progress-container {
       position: fixed;
@@ -95,6 +396,35 @@
 
     .navbar {
       margin-bottom: 0 !important;
+    }
+
+    /* Back to Top Button */
+    #backToTop {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #fa9f1b;
+      color: #ffffff;
+      border: none;
+      display: none; /* shown via JS */
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      z-index: 1000;
+      cursor: pointer;
+    }
+
+    #backToTop:hover {
+      background: #e8890a;
+    }
+
+    #backToTop i {
+      color: #ffffff;
+      font-size: 18px;
+      line-height: 1;
     }
 
     /* Hero Section */
@@ -448,6 +778,22 @@
     .value-card p {
       color: var(--text-secondary);
       line-height: 1.6;
+    }
+    
+    .values-section-title {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+    
+    .values-section-subtitle {
+      font-family: 'Roboto', Arial, sans-serif;
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
     }
 
     /* New Location Section */
@@ -1623,25 +1969,25 @@
       </button>
       <ul class="nav-links" id="primaryNav">
         <li>
-          <a href="index.html" class="nav-link">
+          <a href="index.html" class="nav-link" id="homeNavLink">
             <i class="fa-solid fa-home"></i>
             <span>Home</span>
           </a>
         </li>
         <li>
-          <a href="menu.html" class="nav-link">
+          <a href="menu.html" class="nav-link" id="menuNavLink">
             <i class="fa-solid fa-utensils"></i>
             <span>Menu</span>
           </a>
         </li>
         <li>
-          <a href="story.html" class="nav-link">
+          <a href="story.html" class="nav-link" id="storyNavLink">
             <i class="fa-solid fa-book"></i>
             <span>Our Story</span>
           </a>
         </li>
         <li>
-          <a href="locations.html" class="nav-link">
+          <a href="locations.html" class="nav-link" id="locationsNavLink">
             <i class="fa-solid fa-location-dot"></i>
             <span>Our Locations</span>
           </a>
@@ -1654,8 +2000,8 @@
   <section class="hero">
     <div class="hero-content">
       <div class="hero-text">
-        <h1>From Island Spice to Crispy, Golden Joy</h1>
-        <p>Burley's began with a simple promise: take the boldness of Sri Lankan flavour and build a modern fried chicken experience around it.</p>
+        <h1>From Island Spice to Crispy, Golden Joy - Best Burgers in Colombo</h1>
+        <p>Burley's began with a simple promise: take the boldness of Sri Lankan flavour and build a modern fried chicken experience around it. Now serving the best burgers in Colombo at our Bambalapitiya & Nugegoda locations.</p>
         <div class="hero-stats">
           <div class="stat">
             <span class="stat-number">2020</span>
@@ -1931,78 +2277,58 @@
       <span class="sparkle" style="left: 85%; animation-delay: 0.3s;">✨</span>
     </div>
     <div class="container">
-      <div class="new-location-header">
-        <div class="coming-soon-badge">
-          <i class="fas fa-star"></i> Something Exciting
-        </div>
-        <h2>Guess What's Cooking?</h2>
-        <p>We've got something special brewing... Can you guess what it is? 🤫</p>
+      <div style="text-align: center; margin-bottom: 2.5rem;">
+        <h2 id="blogSectionTitle" class="values-section-title">From the Burley's Journal</h2>
+        <p class="values-section-subtitle">Stories behind our brand, upcoming openings, and where we're headed next.</p>
       </div>
 
-      <div class="new-location-card">
-        <div class="new-location-content-centered">
-          <div class="new-location-details-full">
-            <div class="surprise-badge-large">🎉 Surprise!</div>
-            <h3>A New Adventure Awaits...</h3>
-            <p class="location-intro">Hint: More of what you love, closer than you think! We're bringing that signature Burley's experience to a brand new spot! 🎊</p>
-            
-            <div class="location-features">
-              <div class="feature-item">
-                <i class="fas fa-question-circle"></i>
-                <div>
-                  <strong>The Big Reveal?</strong>
-                  <p>Shhh... We'll announce it very soon! Stay tuned 👀</p>
-                </div>
-              </div>
-              
-              <div class="feature-item">
-                <i class="fas fa-calendar-star"></i>
-                <div>
-                  <strong>When?</strong>
-                  <p>The countdown begins... watch this space! ⏰</p>
-                </div>
-              </div>
-              
-              <div class="feature-item">
-                <i class="fas fa-gift"></i>
-                <div>
-                  <strong>Special Surprises</strong>
-                  <p>Trust us, you won't want to miss this! 🎁</p>
-                </div>
-              </div>
-              
-              <div class="feature-item">
-                <i class="fas fa-fire"></i>
-                <div>
-                  <strong>What to Expect</strong>
-                  <p>Everything you love + something extra special! 🔥</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="location-cta">
-              <p class="stay-tuned">Follow us on social media for clues & the big reveal! 🕵️‍♂️✨</p>
-              <div class="social-cta-buttons">
-                <a href="https://www.instagram.com/burleysfoods" target="_blank" rel="noopener" class="social-btn instagram-btn">
-                  <i class="fab fa-instagram"></i> Follow on Instagram
-                </a>
-                <a href="https://www.facebook.com/burleysfoods" target="_blank" rel="noopener" class="social-btn facebook-btn">
-                  <i class="fab fa-facebook-f"></i> Follow on Facebook
-                </a>
-              </div>
-            </div>
+      <div class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem;">
+        <article class="blog-card" style="background: #ffffff; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: column;">
+          <div class="blog-media" style="aspect-ratio: 16/9; background: #000;">
+            <img src="images/bamba.jpg" alt="Burley's Bambalapitiya - How It Began" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
           </div>
-        </div>
+          <div class="blog-content" style="padding: 1rem 1.25rem; font-family: 'Roboto', Arial, sans-serif;">
+            <h3 style="margin: 0 0 0.5rem 0; font-family: 'Montserrat', Arial, sans-serif;">How It Began</h3>
+            <p style="margin: 0 0 0.75rem 0;">From fashion to flavor — the journey, the setbacks, and the first day we opened.</p>
+            <a href="#" class="link" style="font-weight: 700; color: #e8890a; text-decoration: none;">Read the story →</a>
+          </div>
+        </article>
+
+        <article class="blog-card" style="background: #ffffff; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: column;">
+          <div class="blog-media" style="aspect-ratio: 16/9; background: #000;">
+            <img src="images/nugegoda.jpg" alt="Burley's Nugegoda Outlet - Opening" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+          </div>
+          <div class="blog-content" style="padding: 1rem 1.25rem; font-family: 'Roboto', Arial, sans-serif;">
+            <h3 style="margin: 0 0 0.5rem 0; font-family: 'Montserrat', Arial, sans-serif;">New Outlet Opening — Nugegoda</h3>
+            <p style="margin: 0 0 0.75rem 0;">A sneak peek at the location, opening timeline, and what's special on the menu.</p>
+            <a href="#" class="link" style="font-weight: 700; color: #e8890a; text-decoration: none;">See the update →</a>
+          </div>
+        </article>
+
+        <article class="blog-card" style="background: #ffffff; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: column;">
+          <div class="blog-media" style="aspect-ratio: 16/9; background: #000;">
+            <img src="images/vision.jpg" alt="Burley's Future Vision" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+          </div>
+          <div class="blog-content" style="padding: 1rem 1.25rem; font-family: 'Roboto', Arial, sans-serif;">
+            <h3 style="margin: 0 0 0.5rem 0; font-family: 'Montserrat', Arial, sans-serif;">Our Future Vision</h3>
+            <p style="margin: 0 0 0.75rem 0;">Expanding thoughtfully, elevating quality, and building community—what's next for Burley's.</p>
+            <a href="#" class="link" style="font-weight: 700; color: #e8890a; text-decoration: none;">Explore the vision →</a>
+          </div>
+        </article>
       </div>
+
+      
     </div>
   </section>
+
+  <button id="backToTop" title="Back to Top | Burley's Burgers & Fast Food Colombo"><i class="fas fa-arrow-up"></i></button>
 
   <!-- Values Section -->
   <section class="values-section">
     <div class="container">
       <div style="text-align: center; margin-bottom: 3rem;">
-        <h2 style="font-family: 'Montserrat', Arial, sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem; color: var(--text-primary);">What Drives Us</h2>
-        <p style="font-size: 1.125rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">Our values shape every decision we make, from the spices we select to the communities we serve.</p>
+        <h2 class="values-section-title">What Drives Us</h2>
+        <p class="values-section-subtitle">Our values shape every decision we make, from the spices we select to the communities we serve.</p>
       </div>
       
       <div class="values-grid">
@@ -2049,12 +2375,82 @@
   </section>
 
     <!-- Footer -->
-    <footer>
-      <p>&copy; 2025 Burley's. All rights reserved.</p>
-      <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.5rem;">
-       Developed by <a href="https://delivergate.lk" target="_blank" rel="noopener" style="color: #ffffff; text-decoration: none; font-weight: 600;">Delivergate Pvt Ltd</a>
-      </p>
-  </footer>
+    <footer class="minimalist-footer">
+      <div class="footer-wave">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path
+            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+            fill="#fa9f1b"></path>
+        </svg>
+      </div>
+
+      <div class="footer-wrap">
+        <!-- Logo & Social -->
+        <div class="footer-brand-section">
+          <img src="images/logo white.png" alt="Burley's" class="footer-brand-logo" width="110" height="110"
+            loading="lazy">
+          <p class="footer-slogan">Every Bite, A Burst of Flavour</p>
+          <div class="footer-social-row">
+            <a href="https://www.facebook.com/burleysfoods" class="social-icon-btn facebook" target="_blank"
+              rel="noopener" aria-label="Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/burleysfoods" class="social-icon-btn instagram" target="_blank"
+              rel="noopener" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@burleysfoods" class="social-icon-btn tiktok" target="_blank" rel="noopener"
+              aria-label="TikTok">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Info Cards -->
+        <div class="footer-cards">
+          <div class="info-card">
+            <div class="card-icon">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <h4>Visit Us</h4>
+            <p>32 Galle Road<br>Colombo - 04, Sri Lanka</p>
+          </div>
+
+          <div class="info-card">
+            <div class="card-icon">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <h4>Call Us</h4>
+            <p><a href="tel:+940114670670">+94 11 4670 670</a></p>
+          </div>
+
+          <div class="info-card">
+            <div class="card-icon">
+              <i class="fa-solid fa-clock"></i>
+            </div>
+            <h4>Opening Hours</h4>
+            <p>Mon-Fri: 10AM - 11PM<br>Sat-Sun: 9AM - 12AM</p>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-menu">
+          <a href="index.html">Home</a>
+          <span class="separator">•</span>
+          <a href="menu.html">Menu</a>
+          <span class="separator">•</span>
+          <a href="story.html">Our Story</a>
+          <span class="separator">•</span>
+          <a href="locations.html">Locations</a>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-credits">
+          <p>&copy; 2025 Burley's. All Rights Reserved.</p>
+          <p>Developed by <a href="https://delivergate.lk" target="_blank" rel="noopener">Delivergate Pvt Ltd</a></p>
+        </div>
+      </div>
+    </footer>
 
   <!-- Google Places API Integration -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ_hxyZW5iQI_Jhor_TCC6ImEJtB0_vHY&libraries=places&loading=async" async defer></script>
@@ -2223,6 +2619,16 @@
       }
     });
 
+  </script>
+
+  <script>
+    // Set active navigation link for current page
+    document.addEventListener('DOMContentLoaded', () => {
+      const storyNavLink = document.getElementById('storyNavLink');
+      if (storyNavLink) {
+        storyNavLink.classList.add('active');
+      }
+    });
   </script>
 
 </body>
