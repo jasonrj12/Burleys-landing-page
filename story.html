@@ -972,25 +972,25 @@
       </button>
       <ul class="nav-links" id="primaryNav">
         <li>
-          <a href="index.html" class="nav-link">
+          <a href="index.html" class="nav-link" id="homeNavLink">
             <i class="fa-solid fa-home"></i>
             <span>Home</span>
           </a>
         </li>
         <li>
-          <a href="menu.html" class="nav-link">
+          <a href="menu.html" class="nav-link" id="menuNavLink">
             <i class="fa-solid fa-utensils"></i>
             <span>Menu</span>
           </a>
         </li>
         <li>
-          <a href="story.html" class="nav-link">
+          <a href="story.html" class="nav-link" id="storyNavLink">
             <i class="fa-solid fa-book"></i>
             <span>Our Story</span>
           </a>
         </li>
         <li>
-          <a href="locations.html" class="nav-link">
+          <a href="locations.html" class="nav-link" id="locationsNavLink">
             <i class="fa-solid fa-location-dot"></i>
             <span>Our Locations</span>
           </a>
@@ -1290,6 +1290,16 @@
       observer.observe(el);
     });
 
+  </script>
+
+  <script>
+    // Set active navigation link for current page
+    document.addEventListener('DOMContentLoaded', () => {
+      const storyNavLink = document.getElementById('storyNavLink');
+      if (storyNavLink) {
+        storyNavLink.classList.add('active');
+      }
+    });
   </script>
 
 </body>

@@ -264,8 +264,10 @@
             font-family: 'Montserrat', Arial, sans-serif !important;
         }
 
-        /* Font Consistency with Home Page */
-        h1, h2, h3, h4, h5, h6 {
+        /* Font Consistency with Home Page - Exclude Navigation */
+        main h1, main h2, main h3, main h4, main h5, main h6,
+        .hero-section h1, .hero-section h2, .hero-section h3, .hero-section h4, .hero-section h5, .hero-section h6,
+        .menu-section h1, .menu-section h2, .menu-section h3, .menu-section h4, .menu-section h5, .menu-section h6 {
             font-family: 'Montserrat', Arial, sans-serif !important;
         }
 
@@ -273,12 +275,51 @@
             font-family: 'Montserrat', Arial, sans-serif !important;
         }
 
-        p, span, div, a, button, input, textarea, label {
+        main p, main span, main div, main a, main button, main input, main textarea, main label,
+        .hero-section p, .hero-section span, .hero-section div, .hero-section a, .hero-section button,
+        .menu-section p, .menu-section span, .menu-section div, .menu-section a, .menu-section button {
             font-family: 'Roboto', Arial, sans-serif !important;
         }
 
         .text-4xl, .text-5xl, .text-3xl, .text-2xl, .text-xl, .text-lg {
             font-family: 'Montserrat', Arial, sans-serif !important;
+        }
+
+        /* Ensure navigation keeps its original fonts and functionality */
+        .navbar, .nav-links, .nav-link, .logo {
+            font-family: 'Montserrat', Arial, sans-serif !important;
+        }
+
+        /* Fix navigation functionality */
+        .site-header {
+            position: relative;
+            z-index: 1000;
+        }
+
+        .navbar {
+            position: relative;
+            z-index: 1000;
+        }
+
+        .hamburger {
+            position: relative;
+            z-index: 1001;
+        }
+
+        .nav-links {
+            position: relative;
+            z-index: 999;
+        }
+
+        /* Mobile navigation fixes */
+        @media (max-width: 900px) {
+            .nav-links {
+                position: absolute !important;
+                top: 100% !important;
+                left: 0 !important;
+                right: 0 !important;
+                z-index: 998 !important;
+            }
         }
         
         .hero-section::before {
@@ -2016,6 +2057,12 @@
             // Then load menu items from API
             loadMenuFromAPI();
             
+            // Set active navigation link for current page
+            const menuNavLink = document.getElementById('menuNavLink');
+            if (menuNavLink) {
+                menuNavLink.classList.add('active');
+            }
+
             // Ensure mobile navigation works
             const hamburgerBtn = document.getElementById('hamburger');
             const navLinksContainer = document.querySelector('.nav-links');
