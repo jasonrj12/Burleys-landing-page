@@ -588,6 +588,34 @@
                 display: flex !important;
             }
         }
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #fa9f1b;
+            color: #ffffff;
+            border: none;
+            display: none; /* shown via JS */
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+        #backToTop:hover {
+            background: #e8890a;
+        }
+
+        #backToTop i {
+            color: #ffffff;
+            font-size: 18px;
+            line-height: 1;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -781,12 +809,12 @@
 
 <button id="backToTop" title="Back to Top | Burley's Burgers & Fast Food Colombo"><i class="fas fa-arrow-up"></i></button>
 
-<footer>
-    <p>&copy; 2025 Burley's. All rights reserved.</p>
-    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.5rem; font-family: 'Roboto', Arial, sans-serif;">
-     Developed by <a href="https://delivergate.lk" target="_blank" rel="noopener" style="color: #ffffff; text-decoration: none; font-weight: 600; font-family: 'Montserrat', Arial, sans-serif;">Delivergate Pvt Ltd</a>
-    </p>
-</footer>
+ <footer>
+     <p style="font-family: 'Roboto', Arial, sans-serif;">&copy; 2025 Burley's. All rights reserved.</p>
+     <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.5rem; font-family: 'Roboto', Arial, sans-serif;">
+      Developed by <a href="https://delivergate.lk" target="_blank" rel="noopener" style="color: #ffffff; text-decoration: none; font-weight: 600; font-family: 'Roboto', Arial, sans-serif;">Delivergate Pvt Ltd</a>
+     </p>
+ </footer>
 
     <script>
         // Delivergate API Configuration
