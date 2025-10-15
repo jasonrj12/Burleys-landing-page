@@ -17,9 +17,9 @@
   <link rel="icon" href="images/logo.png" type="image/x-icon">
   <link rel="stylesheet" href="navstyle.css">
   
-  <!-- Optimized Font Loading with display=swap -->
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet"></noscript>
+  <!-- Optimized Font Loading with display=swap & Reduced Variants -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet"></noscript>
   
   <!-- Font Awesome - Deferred -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
@@ -783,6 +783,493 @@
       box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4);
     }
 
+    /* Reviews Section */
+    .reviews-section {
+      padding: 6rem 0;
+      background: var(--surface);
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .reviews-header h2 {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .reviews-header p {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+    }
+
+    .reviews-carousel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .review-arrow {
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-md);
+    }
+
+    .review-arrow:hover {
+      transform: scale(1.1);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .review-arrow:active {
+      transform: scale(0.95);
+    }
+
+    .review-slide {
+      flex: 1;
+      background: var(--gradient-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      min-height: 200px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .review-slide:hover {
+      box-shadow: var(--shadow-lg);
+    }
+
+    .review-content {
+      text-align: center;
+    }
+
+    .review-stars {
+      color: var(--primary);
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .review-text {
+      color: var(--text-primary);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .review-author {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .review-name {
+      font-weight: 700;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 1.1rem;
+      display: inline-block;
+    }
+
+    .review-meta {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    .review-platform {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: none;
+      background: none;
+      padding: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .review-platform i {
+      color: #4285f4;
+      font-size: 1.1rem;
+    }
+
+    .review-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .review-footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .review-date {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      font-weight: 400;
+    }
+
+    /* Gallery Section - Ultra Modern Story Style */
+    .gallery-section {
+      padding: 8rem 0;
+      background: linear-gradient(180deg, #fafafa 0%, #ffffff 50%, #fafafa 100%);
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 5rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .gallery-badge {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      background: var(--gradient);
+      color: white;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 16px rgba(250, 159, 27, 0.3);
+    }
+
+    .gallery-header h2 {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .gallery-header p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 320px;
+      gap: 1.5rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      background: #000;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .featured-item {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .wide-item {
+      grid-column: span 2;
+    }
+
+    .tall-item {
+      grid-row: span 2;
+    }
+
+    .gallery-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.3) 60%,
+        rgba(0, 0, 0, 0.85) 100%
+      );
+      z-index: 1;
+      opacity: 0.6;
+      transition: opacity 0.5s ease;
+    }
+
+    .gallery-item:hover::before {
+      opacity: 1;
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--gradient);
+      opacity: 0;
+      z-index: 1;
+      mix-blend-mode: overlay;
+      transition: opacity 0.5s ease;
+    }
+
+    .gallery-item:hover::after {
+      opacity: 0.15;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      z-index: 2;
+      transform: translateY(20px);
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+
+    .gallery-info {
+      color: white;
+    }
+
+    .gallery-category {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      padding: 0.35rem 0.85rem;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .gallery-title {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0;
+      line-height: 1.2;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    }
+
+    .featured-item .gallery-title {
+      font-size: 2.5rem;
+    }
+
+    .gallery-description {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-top: 0.5rem;
+      opacity: 0.95;
+      font-weight: 400;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Gallery Lightbox - Modern Style */
+    .gallery-lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.97);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      opacity: 0;
+      transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .gallery-lightbox.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      animation: lightboxZoom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes lightboxZoom {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.8);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: white;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 10001;
+    }
+
+    .lightbox-close:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      transform: rotate(90deg) scale(1.05);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: white;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 10001;
+    }
+
+    .lightbox-nav:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .lightbox-nav:active {
+      transform: translateY(-50%) scale(0.95);
+    }
+
+    .lightbox-prev {
+      left: 2rem;
+    }
+
+    .lightbox-next {
+      right: 2rem;
+    }
+
+    .lightbox-caption {
+      color: white;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      text-align: center;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-counter {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.875rem;
+      text-align: center;
+      font-weight: 500;
+    }
+
     /* Footer */
     .footer {
       background: var(--surface-dark);
@@ -816,6 +1303,75 @@
     }
 
     /* Responsive Design */
+    @media (max-width: 1200px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 280px;
+      }
+
+      .featured-item {
+        grid-column: span 3;
+        grid-row: span 1;
+      }
+
+      .wide-item {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .gallery-section {
+        padding: 5rem 0;
+      }
+
+      .gallery-container {
+        padding: 0 1.5rem;
+      }
+
+      .gallery-header {
+        margin-bottom: 3rem;
+      }
+
+      .gallery-header h2 {
+        font-size: 2.5rem;
+      }
+
+      .gallery-header p {
+        font-size: 1rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 260px;
+        gap: 1rem;
+      }
+
+      .featured-item {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+
+      .wide-item {
+        grid-column: span 2;
+      }
+
+      .tall-item {
+        grid-row: span 1;
+      }
+
+      .gallery-title {
+        font-size: 1.35rem;
+      }
+
+      .featured-item .gallery-title {
+        font-size: 1.75rem;
+      }
+
+      .gallery-overlay {
+        padding: 1.5rem;
+      }
+    }
+
     @media (max-width: 768px) {
       .container {
         padding: 0 1rem;
@@ -929,6 +1485,118 @@
 
       .sparkle {
         font-size: 1rem;
+      }
+
+      .reviews-section {
+        padding: 4rem 0;
+      }
+
+      .reviews-carousel {
+        gap: 0.75rem;
+        flex-direction: row;
+      }
+
+      .review-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+
+      .review-slide {
+        padding: 1.5rem 1rem;
+        min-height: 180px;
+      }
+
+      .gallery-section {
+        padding: 4rem 0;
+      }
+
+      .gallery-container {
+        padding: 0 1rem;
+      }
+
+      .gallery-header {
+        margin-bottom: 2.5rem;
+      }
+
+      .gallery-badge {
+        font-size: 0.65rem;
+        padding: 0.4rem 1.2rem;
+      }
+
+      .gallery-header h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .gallery-header p {
+        font-size: 0.95rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 280px;
+        gap: 1rem;
+      }
+
+      .featured-item,
+      .wide-item,
+      .tall-item {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+
+      .gallery-overlay {
+        padding: 1.25rem;
+        transform: translateY(10px);
+      }
+
+      .gallery-category {
+        font-size: 0.65rem;
+        padding: 0.3rem 0.7rem;
+      }
+
+      .gallery-title {
+        font-size: 1.25rem;
+      }
+
+      .featured-item .gallery-title {
+        font-size: 1.5rem;
+      }
+
+      .gallery-description {
+        font-size: 0.85rem;
+        margin-top: 0.35rem;
+      }
+
+      .lightbox-close {
+        top: 1rem;
+        right: 1rem;
+        width: 45px;
+        height: 45px;
+        font-size: 1.25rem;
+      }
+
+      .lightbox-nav {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+      }
+
+      .lightbox-prev {
+        left: 0.5rem;
+      }
+
+      .lightbox-next {
+        right: 0.5rem;
+      }
+
+      .lightbox-caption {
+        font-size: 1rem;
+      }
+
+      .lightbox-counter {
+        font-size: 0.75rem;
       }
 
       .footer-content {
@@ -1132,8 +1800,182 @@
     </div>
   </section>
 
-  <!-- Blog Section -->
-  <section class="blog-section" aria-labelledby="blogSectionTitle" style="margin-bottom: 3rem;">
+  <!-- Photo Gallery Section -->
+  <section class="gallery-section">
+    <div class="gallery-container">
+      <div class="gallery-header">
+        <span class="gallery-badge">Visual Story</span>
+        <h2>Our Story in Pictures</h2>
+        <p>From grand opening to today - witness the journey that made Burley's a beloved destination</p>
+      </div>
+      
+      <div class="gallery-grid">
+        <!-- Main Featured Image - Grand Opening -->
+        <div class="gallery-item featured-item" data-gallery-index="0">
+          <img src="images/opening.jpg" alt="Burley's Grand Opening Ceremony - February 21, 2022" loading="lazy">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-category">February 21, 2022</span>
+              <h3 class="gallery-title">Our Journey Begins</h3>
+              <p class="gallery-description">The ribbon cutting ceremony that started it all</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Opening Ceremony Photos -->
+        <div class="gallery-item" data-gallery-index="1">
+          <img src="images/opening2.jpg" alt="Burley's Opening Celebration" loading="lazy">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-category">Grand Opening</span>
+              <h3 class="gallery-title">Celebration Day</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-gallery-index="2">
+          <img src="images/opening3.jpg" alt="Burley's Launch Event" loading="lazy">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-category">The Beginning</span>
+              <h3 class="gallery-title">Dreams Realized</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wide Item - Children's Day 2022 -->
+        <div class="gallery-item wide-item" data-gallery-index="3">
+          <img src="images/childrensday2022.jpg" alt="Burley's Children's Day 2022 Celebration" loading="lazy">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-category">Special Event 2022</span>
+              <h3 class="gallery-title">Children's Day Joy</h3>
+              <p class="gallery-description">Creating smiles and memories for the little ones</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2nd Outlet - Nugegoda -->
+        <div class="gallery-item" data-gallery-index="4">
+          <img src="images/2nd outlet Nugegoda.webp" alt="Burley's 2nd Outlet - Nugegoda" loading="lazy">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-category">Expansion</span>
+              <h3 class="gallery-title">Nugegoda Branch</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Outdoor Exterior -->
+        <div class="gallery-item" data-gallery-index="5">
+          <img src="images/outdoor1.jpg" alt="Burley's Restaurant Exterior" loading="lazy">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-category">Our Home</span>
+              <h3 class="gallery-title">Welcome</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tall Item - Interior 1 -->
+        <div class="gallery-item tall-item" data-gallery-index="6">
+          <img src="images/interior1.jpg" alt="Burley's Restaurant Interior" loading="lazy">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-category">Interior</span>
+              <h3 class="gallery-title">Modern Vibes</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interior 2 -->
+        <div class="gallery-item" data-gallery-index="7">
+          <img src="images/interior2.jpg" alt="Burley's Dining Area" loading="lazy">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-category">Dining</span>
+              <h3 class="gallery-title">Comfort Zone</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interior 3 -->
+        <div class="gallery-item" data-gallery-index="8">
+          <img src="images/interior3.jpg" alt="Burley's Restaurant Atmosphere" loading="lazy">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-category">Ambiance</span>
+              <h3 class="gallery-title">Perfect Setting</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interior 4 -->
+        <div class="gallery-item" data-gallery-index="9">
+          <img src="images/interior4.jpg" alt="Burley's Interior Details" loading="lazy">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-category">Details</span>
+              <h3 class="gallery-title">Crafted Space</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Outlet 1 -->
+        <div class="gallery-item" data-gallery-index="10">
+          <img src="images/outlet.png" alt="Burley's Restaurant View" loading="lazy">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-category">First Outlet</span>
+              <h3 class="gallery-title">Original Location</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Outlet 2 -->
+        <div class="gallery-item" data-gallery-index="11">
+          <img src="images/outlet2.png" alt="Burley's Outlet Design" loading="lazy">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-category">Design</span>
+              <h3 class="gallery-title">Modern Style</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Lightbox Modal -->
+  <div class="gallery-lightbox" id="galleryLightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close gallery">
+      <i class="fas fa-times"></i>
+    </button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    <div class="lightbox-content">
+      <img src="" alt="" id="lightboxImage">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+      <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+  </div>
+
+  <!-- New Location Section -->
+  <section class="new-location-section">
+    <div class="sparkles">
+      <span class="sparkle" style="left: 10%; animation-delay: 0s;">✨</span>
+      <span class="sparkle" style="left: 25%; animation-delay: 1s;">🎉</span>
+      <span class="sparkle" style="left: 45%; animation-delay: 0.5s;">⭐</span>
+      <span class="sparkle" style="left: 60%; animation-delay: 1.5s;">✨</span>
+      <span class="sparkle" style="left: 75%; animation-delay: 0.8s;">🎊</span>
+      <span class="sparkle" style="left: 90%; animation-delay: 1.2s;">⭐</span>
+      <span class="sparkle" style="left: 15%; animation-delay: 2s;">🎉</span>
+      <span class="sparkle" style="left: 85%; animation-delay: 0.3s;">✨</span>
+    </div>
     <div class="container">
       <div style="text-align: center; margin-bottom: 2.5rem;">
         <h2 id="blogSectionTitle" class="values-section-title">From the Burley's Journal</h2>
@@ -1217,6 +2059,21 @@
     </div>
   </section>
 
+  <!-- Reviews Section -->
+  <section class="reviews-section">
+    <div class="container">
+      <div class="reviews-header">
+        <h2>What Our Customers Say</h2>
+        <p>Real reviews from real people who love Burley's</p>
+      </div>
+      <div class="reviews-carousel">
+        <button class="review-arrow" id="reviewPrev" aria-label="Previous review"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="review-slide" id="reviewSlide"></div>
+        <button class="review-arrow" id="reviewNext" aria-label="Next review"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
     <!-- Footer -->
   <footer>
       <p style="font-family: 'Roboto', Arial, sans-serif;">&copy; 2025 Burley's. All rights reserved.</p>
@@ -1225,6 +2082,10 @@
       </p>
   </footer>
 
+  <!-- Google Places API Integration -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ_hxyZW5iQI_Jhor_TCC6ImEJtB0_vHY&libraries=places&loading=async" async defer></script>
+  <script src="google-places-reviews.js" defer></script>
+  
   <script src="script.js" defer></script>
   <script>
     // Mobile menu toggle
@@ -1282,11 +2143,110 @@
     }, observerOptions);
 
     // Observe elements for animation
-    document.querySelectorAll('.value-card, .highlight, .story-card, .new-location-card').forEach(el => {
+    document.querySelectorAll('.value-card, .highlight, .story-card, .new-location-card, .gallery-item').forEach(el => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(30px)';
       el.style.transition = 'all 0.6s ease';
       observer.observe(el);
+    });
+
+    // ========================================
+    // PHOTO GALLERY LIGHTBOX FUNCTIONALITY
+    // ========================================
+    
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('galleryLightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    
+    let currentGalleryIndex = 0;
+    
+    // Gallery data from DOM
+    const galleryData = Array.from(galleryItems).map(item => {
+      const img = item.querySelector('img');
+      return {
+        src: img.src,
+        alt: img.alt
+      };
+    });
+    
+    // Open lightbox
+    function openLightbox(index) {
+      currentGalleryIndex = index;
+      updateLightboxContent();
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    // Close lightbox
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    
+    // Update lightbox content
+    function updateLightboxContent() {
+      const item = galleryData[currentGalleryIndex];
+      lightboxImage.src = item.src;
+      lightboxImage.alt = item.alt;
+      lightboxCaption.textContent = item.alt;
+      lightboxCounter.textContent = `${currentGalleryIndex + 1} / ${galleryData.length}`;
+    }
+    
+    // Navigate to previous image
+    function showPrevImage() {
+      currentGalleryIndex = (currentGalleryIndex - 1 + galleryData.length) % galleryData.length;
+      updateLightboxContent();
+    }
+    
+    // Navigate to next image
+    function showNextImage() {
+      currentGalleryIndex = (currentGalleryIndex + 1) % galleryData.length;
+      updateLightboxContent();
+    }
+    
+    // Event listeners for gallery items
+    galleryItems.forEach((item, index) => {
+      item.addEventListener('click', () => openLightbox(index));
+    });
+    
+    // Event listeners for lightbox controls
+    if (lightboxClose) {
+      lightboxClose.addEventListener('click', closeLightbox);
+    }
+    
+    if (lightboxPrev) {
+      lightboxPrev.addEventListener('click', showPrevImage);
+    }
+    
+    if (lightboxNext) {
+      lightboxNext.addEventListener('click', showNextImage);
+    }
+    
+    // Close lightbox on background click
+    if (lightbox) {
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+    }
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        showPrevImage();
+      } else if (e.key === 'ArrowRight') {
+        showNextImage();
+      }
     });
 
   </script>
